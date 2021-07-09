@@ -10,6 +10,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 --Set colorscheme (order is important here)
+vim.g.onedark_style = 'warm'
 vim.o.termguicolors = true
 vim.g.onedark_terminal_italics = 2
 
@@ -60,8 +61,9 @@ bo.expandtab = true
 bo.syntax = "on"
 bo.smartindent = true
 
+require('tresitterInit')
 require('telescopeInit')
 require('compleInit')
 require('lspInit')
 require('vimspectorInit')
-
+require('vimclangformatInit')
