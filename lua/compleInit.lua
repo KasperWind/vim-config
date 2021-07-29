@@ -13,10 +13,10 @@ require'compe'.setup {
   max_menu_width = 100;
   documentation = {
     border = "none", -- the border option is the same as `|help nvim_open_win|`
-    winhighlight = "CompeDocumentation", -- highlight group used for the documentation window
+    winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder", -- highlight group used for the documentation window
     max_width = 120,
     min_width = 40,
-    max_height = math.floor(vim.o.lines * 0.3),
+    max_height = math.floor(vim.o.lines * 0.5),
     min_height = 1,
   };
 
@@ -33,4 +33,8 @@ require'compe'.setup {
 }
 
 
-vim.api.nvim_set_keymap('n', '<C-Space>', [[<cmd>compe#complete()<CR>]], { noremap = true, silent = true})
+vim.api.nvim_set_keymap('i', '<expr><C-Space>', [[<cmd>compe#complete()]], { noremap = true, silent = true})
+vim.api.nvim_set_keymap('i', '<expr><CR>'     , [[<cmd>compe#confirm('<CR>')]], { noremap = true, silent = true})
+vim.api.nvim_set_keymap('i', '<expr><C-e>'    , [[<cmd>compe#close('<C-e>')]], { noremap = true, silent = true})
+vim.api.nvim_set_keymap('i', '<expr><C-f>'    , [[<cmd>compe#scroll({ 'delta': +4 })]], { noremap = true, silent = true})
+vim.api.nvim_set_keymap('i', '<expr><C-d>'    , [[<cmd>compe#scroll({ 'delta': -4 })]], { noremap = true, silent = true})

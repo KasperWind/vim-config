@@ -5,14 +5,12 @@ require 'paq-nvim' {
   'neovim/nvim-lspconfig';         
   'nvim-lua/lsp_extensions.nvim';
 	{'nvim-treesitter/nvim-treesitter', run=TSUpdate};
-	
 
- -- 'hrsh7th/nvim-compe';
-	'neoclide/coc.nvim';
+  'hrsh7th/nvim-compe';
+--	'neoclide/coc.nvim';
 	{'junegunn/fzf', run=vim.fn["fzf#install()"]};
 	
 	'tpope/vim-fugitive';
-
 	'rhysd/vim-clang-format';
 
   {'lervag/vimtex', opt=true};    

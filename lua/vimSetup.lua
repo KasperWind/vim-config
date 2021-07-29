@@ -11,6 +11,7 @@ vim.g.maplocalleader = " "
 
 -- Y yank until the end of line
 vim.api.nvim_set_keymap('n', 'Y', 'y$', { noremap = true})
+vim.api.nvim_set_keymap('n', '<C-q>', ':q<CR>', { noremap = true, silent = true})
 
 -- global options
 o.swapfile = false
