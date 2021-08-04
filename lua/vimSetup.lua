@@ -32,6 +32,7 @@ o.softtabstop = 2
 o.shiftwidth = 2
 o.cmdheight = 2	
 o.updatetime = 300
+o.expandtab = true
 
 -- window-local options
 wo.relativenumber = true
