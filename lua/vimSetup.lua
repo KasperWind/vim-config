@@ -14,6 +14,12 @@ vim.api.nvim_set_keymap('n', 'Y', 'y$', { noremap = true})
 vim.api.nvim_set_keymap('n', '<C-q>', ':q<CR>', { noremap = true, silent = true})
 
 -- global options
+vim.g.netrw_liststyle = 3
+vim.g.netrw_browse_split = 4
+vim.g.netrw_winsize = 70
+vim.g.netrw_altv = 0
+vim.g.splitright = true
+vim.g.netrw_preview = 1
 o.swapfile = false
 o.dir = '/tmp'
 o.smartcase = true
@@ -24,13 +30,13 @@ o.incsearch = true
 o.hlsearch = false
 o.inccommand = "nosplit"
 o.completeopt = "menuone,noinsert,noselect"
-o.scrolloff = 12 
-o.splitbelow = true	
+o.scrolloff = 12
+o.splitbelow = true
 o.splitright = true
 o.tabstop = 2
 o.softtabstop = 2
 o.shiftwidth = 2
-o.cmdheight = 2	
+o.cmdheight = 2
 o.updatetime = 300
 o.expandtab = true
 

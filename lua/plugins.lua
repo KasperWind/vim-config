@@ -2,6 +2,9 @@ require 'paq-nvim' {
   'navarasu/onedark.vim' ; 
   'savq/paq-nvim';                  
 
+  'tpope/vim-dispatch';
+  {'rcarriga/vim-ultest', run=UpdateRemotePlugins};
+  'vim-test/vim-test';
   'neovim/nvim-lspconfig';         
   'nvim-lua/lsp_extensions.nvim';
 	{'nvim-treesitter/nvim-treesitter', run=TSUpdate};
