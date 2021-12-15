@@ -4,6 +4,7 @@ local nvim_lsp = require('lspconfig')
 vim.g.completion_matching_strategy_list = {'exact', 'substring', 'fuzzy'}
 vim.g.completion_enable_auto_signature = 0
 
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -39,7 +40,10 @@ end
 -- Enable the following language servers
 local servers = { 'clangd', 'hls', 'rust_analyzer', 'taplo', 'tsserver', 'texlab', 'pylsp'}
 for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup { on_attach = on_attach}
+  nvim_lsp[lsp].setup { 
+    on_attach = on_attach,
+    capabilities = capabilities
+  }
 end
 
 local system_name
