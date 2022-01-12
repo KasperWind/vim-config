@@ -1,4 +1,4 @@
-require 'paq-nvim' {
+require "paq" {
   'savq/paq-nvim';                  
 
   'navarasu/onedark.nvim' ; 
