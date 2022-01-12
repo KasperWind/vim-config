@@ -1,7 +1,7 @@
 require "paq" {
   'savq/paq-nvim';                  
 
-  'navarasu/onedark.nvim' ; 
+  'joshdick/onedark.vim' ; 
 
   'tpope/vim-dispatch';
   {'rcarriga/vim-ultest', run=UpdateRemotePlugins};
