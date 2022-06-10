@@ -11,7 +11,7 @@ git clone --depth=1 https://github.com/savq/paq-nvim.git  c:\users\kbw\AppData\L
 
 then source the plugins.lua
 
-# Rust analyzer
+## Rust analyzer
 
 
 # linux
