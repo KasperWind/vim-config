@@ -4,7 +4,7 @@ require "paq" {
   'joshdick/onedark.vim';
   'ellisonleao/gruvbox.nvim';
   'tpope/vim-dispatch';
-  {'rcarriga/vim-ultest', run=UpdateRemotePlugins};
+--  {'rcarriga/vim-ultest', run=UpdateRemotePlugins};
   'vim-test/vim-test';
   'neovim/nvim-lspconfig';         
   'nvim-lua/lsp_extensions.nvim';
@@ -22,7 +22,7 @@ require "paq" {
 
 --	'neoclide/coc.nvim';
 	{'junegunn/fzf', run=vim.fn["fzf#install()"]};
-	
+
 	'tpope/vim-fugitive';
 	'rhysd/vim-clang-format';
 
@@ -30,6 +30,9 @@ require "paq" {
   'nvim-lua/popup.nvim';
   'nvim-lua/plenary.nvim';
   'nvim-telescope/telescope.nvim';
+  'nvim-treesitter/nvim-treesitter';
+  'antoinemadec/FixCursorHold.nvim';
+  'nvim-neotest/neotest';
   'itchyny/lightline.vim';
 	'puremourning/vimspector';
 	'szw/vim-maximizer';
