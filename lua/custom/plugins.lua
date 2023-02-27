@@ -45,7 +45,7 @@ return function(use)
   }
 
   -- Git related plugins
-  -- use 'tpope/vim-fugitive'
+  use 'tpope/vim-fugitive'
   use 'tpope/vim-rhubarb'
   use 'lewis6991/gitsigns.nvim'
 
