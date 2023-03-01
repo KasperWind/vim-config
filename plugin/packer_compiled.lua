@@ -299,6 +299,11 @@ _G.packer_plugins = {
     path = "/home/kasperw/.local/share/nvim/site/pack/packer/start/undotree",
     url = "https://github.com/mbbill/undotree"
   },
+  ["vim-bbye"] = {
+    loaded = true,
+    path = "/home/kasperw/.local/share/nvim/site/pack/packer/start/vim-bbye",
+    url = "https://github.com/moll/vim-bbye"
+  },
   ["vim-fugitive"] = {
     loaded = true,
     path = "/home/kasperw/.local/share/nvim/site/pack/packer/start/vim-fugitive",

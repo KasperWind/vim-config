@@ -50,6 +50,7 @@ return function(use)
   use 'lewis6991/gitsigns.nvim'
 
   use 'akinsho/bufferline.nvim'
+  use 'moll/vim-bbye'
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
   use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
@@ -94,6 +95,5 @@ return function(use)
   -- use 'leoluz/nvim-dap-go'
   --
   -- use {'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim'}
-
 
 end
