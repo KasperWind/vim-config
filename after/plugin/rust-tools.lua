@@ -5,8 +5,6 @@ end
 
 local extension_path = vim.env.HOME .. '/.local/share/nvim/mason/packages/codelldb/extension/adapter/'
 local codelldb_path = extension_path .. 'codelldb'
-local liblldb_path = extension_path .. 'libcodelldb.so'
-
 
 local opts = {
   tools = { -- rust-tools options
