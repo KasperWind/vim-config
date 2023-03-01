@@ -129,11 +129,6 @@ _G.packer_plugins = {
     path = "/home/kasperw/.local/share/nvim/site/pack/packer/start/fidget.nvim",
     url = "https://github.com/j-hui/fidget.nvim"
   },
-  ["flutter-tools.nvim"] = {
-    loaded = true,
-    path = "/home/kasperw/.local/share/nvim/site/pack/packer/start/flutter-tools.nvim",
-    url = "https://github.com/akinsho/flutter-tools.nvim"
-  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/home/kasperw/.local/share/nvim/site/pack/packer/start/friendly-snippets",
@@ -203,11 +198,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/kasperw/.local/share/nvim/site/pack/packer/start/nvim-dap",
     url = "https://github.com/mfussenegger/nvim-dap"
-  },
-  ["nvim-dap-go"] = {
-    loaded = true,
-    path = "/home/kasperw/.local/share/nvim/site/pack/packer/start/nvim-dap-go",
-    url = "https://github.com/leoluz/nvim-dap-go"
   },
   ["nvim-dap-ui"] = {
     loaded = true,
@@ -308,6 +298,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/kasperw/.local/share/nvim/site/pack/packer/start/undotree",
     url = "https://github.com/mbbill/undotree"
+  },
+  ["vim-fugitive"] = {
+    loaded = true,
+    path = "/home/kasperw/.local/share/nvim/site/pack/packer/start/vim-fugitive",
+    url = "https://github.com/tpope/vim-fugitive"
   },
   ["vim-illuminate"] = {
     loaded = true,

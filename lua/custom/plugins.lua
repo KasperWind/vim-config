@@ -84,16 +84,16 @@ return function(use)
   -- comment/uncomment
   use 'terrortylor/nvim-comment'
 
-  -- DAP
+  -- dap
   use 'mfussenegger/nvim-dap'
-  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+  use 'rcarriga/nvim-dap-ui'
   use 'theHamsta/nvim-dap-virtual-text'
   use 'nvim-telescope/telescope-dap.nvim'
-
-  -- go dap
-  use 'leoluz/nvim-dap-go'
-
-  use {'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim'}
+  --
+  -- -- go dap
+  -- use 'leoluz/nvim-dap-go'
+  --
+  -- use {'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim'}
 
 
 end
