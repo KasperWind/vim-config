@@ -1,4 +1,8 @@
-local dap = require('dap')
+local dap_ok, dap = pcall(require, 'dap')
+if not dap_ok then
+  print("codelldb not loaded")
+  return
+end
 
 dap.adapters.codelldb = {
   type = 'server',
@@ -23,4 +27,3 @@ dap.configurations.cpp = {
 }
 
 dap.configurations.c = dap.configurations.cpp
---dap.configurations.rust = dap.configurations.cpp

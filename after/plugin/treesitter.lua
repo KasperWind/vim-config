@@ -1,6 +1,10 @@
--- [[ Configure Treesitter ]]
+local tree_status_ok, treesitter = pcall(require, "nvim-treesitter.configs")
+if not tree_status_ok then
+  print("dap and dap ui not loaded")
+  return
+end
 -- See `:help nvim-treesitter`
-require('nvim-treesitter.configs').setup {
+treesitter.setup {
   -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'help', 'dart', 'haskell', 'bash', 'dockerfile', 'cmake', 'yaml', 'toml', 'svelte', 'proto' },
 
