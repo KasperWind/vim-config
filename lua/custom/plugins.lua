@@ -91,9 +91,9 @@ return function(use)
   use 'theHamsta/nvim-dap-virtual-text'
   use 'nvim-telescope/telescope-dap.nvim'
   --
-  -- -- go dap
-  -- use 'leoluz/nvim-dap-go'
-  --
+  -- go dap
+  use 'leoluz/nvim-dap-go'
+
   -- use {'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim'}
 
 end

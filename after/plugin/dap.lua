@@ -1,10 +1,12 @@
 local dap_status_ok, dap = pcall(require, "dap")
 if not dap_status_ok then
+  print("dap and dap ui not loaded")
   return
 end
 
 local dap_ui_status_ok, dapui = pcall(require, "dapui")
 if not dap_ui_status_ok then
+  print("dap and dap ui not loaded")
   return
 end
 
@@ -100,4 +102,4 @@ vim.keymap.set('n', '<Leader>ds', function()
 end)
 
 require("custom.dap.codelldb")
-
+require("custom.dap.go")
