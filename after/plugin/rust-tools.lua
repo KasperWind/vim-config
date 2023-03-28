@@ -7,25 +7,25 @@ local extension_path = vim.env.HOME .. '/.local/share/nvim/mason/packages/codell
 local codelldb_path = extension_path .. 'codelldb'
 
 local function lsp_keymaps(_, bufnr)
-	local opts = { buffer = bufnr, noremap = true, silent = true }
-	local keymap = vim.keymap.set
-	keymap("n", "gD", vim.lsp.buf.declaration, opts)
-	keymap("n", "gd", vim.lsp.buf.definition, opts)
-	keymap("n", "K", vim.lsp.buf.hover, opts)
-	keymap("n", "gI", vim.lsp.buf.implementation, opts)
-	keymap("n", "gr", vim.lsp.buf.references, opts)
-	keymap("n", "gl", vim.diagnostic.open_float, opts)
-	keymap("n", "<leader>lf", function() vim.lsp.buf.format({ async = true }) end, opts)
-	keymap("n", "<leader>li", "<cmd>LspInfo<cr>", opts)
-	keymap("n", "<leader>lI", "<cmd>LspInstall<cr>", opts)
-    keymap("n", "<Leader>la", rt.code_action_group.code_action_group, opts)
-    keymap("n", "<C-space>", rt.hover_actions.hover_actions, opts)
-	keymap("n", "<leader>lj", function() vim.diagnostic.goto_next({buffer=0}) end, opts)
-	keymap("n", "<leader>lk", function() vim.diagnostic.goto_prev({buffer=0}) end, opts)
-	keymap("n", "<leader>lr", vim.lsp.buf.rename, opts)
-	keymap("n", "<leader>ls", vim.lsp.buf.signature_help, opts)
-	keymap("i", "<C-k>", vim.lsp.buf.signature_help, opts)
-	keymap("n", "<leader>lq", vim.diagnostic.setloclist, opts)
+  local opts = { buffer = bufnr, noremap = true, silent = true }
+  local keymap = vim.keymap.set
+  keymap("n", "gD", vim.lsp.buf.declaration, opts)
+  keymap("n", "gd", vim.lsp.buf.definition, opts)
+  keymap("n", "K", vim.lsp.buf.hover, opts)
+  keymap("n", "gI", vim.lsp.buf.implementation, opts)
+  keymap("n", "gr", vim.lsp.buf.references, opts)
+  keymap("n", "gl", vim.diagnostic.open_float, opts)
+  keymap("n", "<leader>lf", function() vim.lsp.buf.format({ async = true }) end, opts)
+  keymap("n", "<leader>li", "<cmd>LspInfo<cr>", opts)
+  keymap("n", "<leader>lI", "<cmd>LspInstall<cr>", opts)
+  keymap("n", "<Leader>la", rt.code_action_group.code_action_group, opts)
+  keymap("n", "<C-space>", rt.hover_actions.hover_actions, opts)
+  keymap("n", "<leader>lj", function() vim.diagnostic.goto_next({buffer=0}) end, opts)
+  keymap("n", "<leader>lk", function() vim.diagnostic.goto_prev({buffer=0}) end, opts)
+  keymap("n", "<leader>lr", vim.lsp.buf.rename, opts)
+  keymap("n", "<leader>ls", vim.lsp.buf.signature_help, opts)
+  keymap("i", "<C-k>", vim.lsp.buf.signature_help, opts)
+  keymap("n", "<leader>lq", vim.diagnostic.setloclist, opts)
 end
 
 local opts = {
