@@ -68,6 +68,10 @@ nvim_tree.setup {
       error = "",
     },
   },
+  filters = {
+    dotfiles = false,
+    custom = {"^\\.git"},
+  },
   view = {
     width = 30,
     side = "left",
