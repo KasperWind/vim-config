@@ -26,6 +26,7 @@ local function lsp_keymaps(_, bufnr)
   keymap("n", "<leader>ls", vim.lsp.buf.signature_help, opts)
   keymap("i", "<C-k>", vim.lsp.buf.signature_help, opts)
   keymap("n", "<leader>lq", vim.diagnostic.setloclist, opts)
+  keymap("n", "<leader>llr", rt.runnables.runnables, opts)
 end
 
 local opts = {
