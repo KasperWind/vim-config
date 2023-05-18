@@ -94,6 +94,9 @@ return function(use)
   -- go dap
   use 'leoluz/nvim-dap-go'
 
+  -- zig lsp
+  use 'ziglang/zig'
+
   -- use {'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim'}
 
 end
