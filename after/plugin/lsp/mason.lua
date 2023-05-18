@@ -14,6 +14,7 @@ local servers = {
 	"hls",
 	"cmake",
 	"taplo",
+	"zls"
 }
 
 local settings = {
