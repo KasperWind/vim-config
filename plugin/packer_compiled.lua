@@ -299,6 +299,11 @@ _G.packer_plugins = {
     path = "/home/kasperw/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
+  ["text-case.nvim"] = {
+    loaded = true,
+    path = "/home/kasperw/.local/share/nvim/site/pack/packer/start/text-case.nvim",
+    url = "https://github.com/johmsalas/text-case.nvim"
+  },
   undotree = {
     loaded = true,
     path = "/home/kasperw/.local/share/nvim/site/pack/packer/start/undotree",
@@ -328,6 +333,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/kasperw/.local/share/nvim/site/pack/packer/start/vim-sleuth",
     url = "https://github.com/tpope/vim-sleuth"
+  },
+  zig = {
+    loaded = true,
+    path = "/home/kasperw/.local/share/nvim/site/pack/packer/start/zig",
+    url = "https://github.com/ziglang/zig"
   }
 }
 

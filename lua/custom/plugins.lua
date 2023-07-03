@@ -98,5 +98,8 @@ return function(use)
   use 'ziglang/zig'
 
   -- use {'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim'}
+  
+  -- text edit tools
+  use 'johmsalas/text-case.nvim'
 
 end
