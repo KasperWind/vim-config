@@ -9,12 +9,13 @@ local servers = {
 	"yamlls",
 	"clangd",
 	"gopls",
-	"rust_analyzer",
+--"rust_analyzer",
 	"tsserver",
-	"hls",
+--	"hls",
+	"ocamllsp",
 	"cmake",
 	"taplo",
-	"zls"
+	-- "zls"
 }
 
 local settings = {
