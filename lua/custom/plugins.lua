@@ -69,6 +69,10 @@ return function(use)
   use 'sainnhe/gruvbox-material'
   use {'catppuccin/nvim', as = 'catppuccin'}
 
+  -- tmux
+  use 'alexghergh/nvim-tmux-navigation'
+  -- use 'christoomey/vim-tmux-navigation'
+
   -- Rust
   use 'simrat39/rust-tools.nvim'
   use 'nvim-tree/nvim-tree.lua'
