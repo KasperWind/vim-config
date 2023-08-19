@@ -67,6 +67,7 @@ return function(use)
   -- Colorscheme
   use 'navarasu/onedark.nvim' -- Theme inspired by Atom
   use 'sainnhe/gruvbox-material'
+  use {'catppuccin/nvim', as = 'catppuccin'}
 
   -- Rust
   use 'simrat39/rust-tools.nvim'
@@ -95,7 +96,7 @@ return function(use)
   use 'leoluz/nvim-dap-go'
 
   -- zig lsp
-  use 'ziglang/zig'
+  -- use 'ziglang/zig'
 
   -- use {'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim'}
   

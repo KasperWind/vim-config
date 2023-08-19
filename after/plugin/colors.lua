@@ -9,12 +9,31 @@ else
   vim.o.background = "dark"
 end
 
-vim.g.gruvbox_material_better_performance = 1
+-- vim.g.gruvbox_material_better_performance = 1
+--vim.cmd [[colorscheme gruvbox-material]]
+--
+--
+require("catppuccin").setup({
+  background = {
+    light = "latte",
+    dark = "macchiato",
+  },
+  integrations = {
+      cmp = true,
+      gitsigns = true,
+      nvimtree = true,
+      treesitter = true,
+      notify = false,
+      mini = false,
+  }
+})
 
-vim.cmd [[colorscheme gruvbox-material]]
 require('lualine').setup {
   options = {
     icons_enabled = true,
-    theme = 'gruvbox-material',
+    theme = 'catppuccin',
   },
 }
+
+vim.cmd.colorscheme "catppuccin"
+
