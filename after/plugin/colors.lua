@@ -4,7 +4,8 @@
 local temp = os.date("*t", os.time())
 local h = tonumber(temp.hour)
 if h >= 8 and h < 20 then
-  vim.o.background = "light"
+  -- vim.o.background = "light"
+  vim.o.background = "dark"
 else
   vim.o.background = "dark"
 end

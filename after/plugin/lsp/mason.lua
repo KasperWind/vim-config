@@ -1,4 +1,5 @@
 local servers = {
+	"asm_lsp",
 	"lua_ls",
 	"cssls",
 	"html",
@@ -15,6 +16,7 @@ local servers = {
 	"ocamllsp",
 	"cmake",
 	"taplo",
+	"sqlls"
 	-- "zls"
 }
 
