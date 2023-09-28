@@ -1,6 +1,6 @@
 local tree_status_ok, treesitter = pcall(require, "nvim-treesitter.configs")
 if not tree_status_ok then
-  print("dap and dap ui not loaded")
+  print("treesitter not loaded")
   return
 end
 -- See `:help nvim-treesitter`
@@ -22,3 +22,10 @@ treesitter.setup {
 		enable = true,
 	},
 }
+local tree_context_status_ok, context = pcall(require, "treesitter-context")
+if not tree_context_status_ok then
+  print("treesitter context not loaded")
+  return
+end
+
+context.setup()

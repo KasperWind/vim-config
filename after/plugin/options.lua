@@ -25,6 +25,7 @@ vim.opt.writebackup = false                     -- if a file is being edited by 
 vim.opt.expandtab = true                        -- convert tabs to spaces
 vim.opt.shiftwidth = 4                          -- the number of spaces inserted for each indentation
 vim.opt.tabstop = 4                             -- insert 2 spaces for a tab
+vim.opt.softtabstop=4
 vim.opt.cursorline = true                       -- highlight the current line
 vim.opt.number = true                           -- set numbered lines
 vim.opt.relativenumber = true                  -- set relative numbered lines

@@ -72,9 +72,9 @@ snippet ase "assert_eq!"
 	assert_eq!(${1:expected}, ${2:actual});
 snippet test "Unit test function"
 	#[test]
-	fn ${1:function_name}_test() {
+	fn test_${1:function_name}() -> Result<()> {
 		${0}
-		todo!()
+		Ok(())
 	}
 snippet atest "Async Unit test function"
 	#[serial]
