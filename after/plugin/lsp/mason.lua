@@ -10,7 +10,7 @@ local servers = {
 	"yamlls",
 	"clangd",
 	"gopls",
---"rust_analyzer",
+    "rust_analyzer",
 	"tsserver",
 --	"hls",
 	"ocamllsp",

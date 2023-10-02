@@ -43,6 +43,7 @@ return function(use)
     'nvim-treesitter/nvim-treesitter-textobjects',
     after = 'nvim-treesitter',
   }
+  use 'nvim-treesitter/nvim-treesitter-context'
 
   -- Git related plugins
   use 'tpope/vim-fugitive'
