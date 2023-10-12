@@ -36,7 +36,7 @@ vim.opt.scrolloff = 8                           -- is one of my fav
 vim.opt.sidescrolloff = 8
 vim.wo.signcolumn = 'yes'
 vim.opt.isfname:append("@-@")
-vim.opt.guicursor = "a:block,n:blinkon0,i:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor"
+-- vim.opt.guicursor = "a:block,n:blinkon0,i:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor"
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
