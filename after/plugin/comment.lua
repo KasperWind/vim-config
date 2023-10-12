@@ -9,10 +9,9 @@ if not indent_status_ok then
   print('indent_blankline not loaded')
   return
 end
-comment.setup()
+comment.setup {}
 
-indent.setup {
-}
+indent.setup { }
 
 local highlight = {
     "RainbowRed",

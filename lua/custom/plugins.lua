@@ -39,7 +39,7 @@ return function(use)
       pcall(require('nvim-treesitter.install').update { with_sync = true })
     end,
   }
-  use 'p00f/nvim-ts-rainbow'
+  -- use 'p00f/nvim-ts-rainbow'
   use { -- Additional text objects via treesitter
     'nvim-treesitter/nvim-treesitter-textobjects',
     after = 'nvim-treesitter',
@@ -51,7 +51,8 @@ return function(use)
   use 'tpope/vim-rhubarb'
   use 'lewis6991/gitsigns.nvim'
 
-  use 'akinsho/bufferline.nvim'
+  -- use 'akinsho/bufferline.nvim'
+  use { 'willothy/nvim-cokeline', requires = { 'nvim-lua/plenary.nvim', "kyazdani42/nvim-web-devicons" }, config = true }
   use 'moll/vim-bbye'
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines

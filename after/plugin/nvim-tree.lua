@@ -4,26 +4,26 @@ if not status_ok then
   return
 end
 
-local function open_nvim_tree(data)
-  local directory = vim.fn.isdirectory(data.file) == 1
-
-  if data.file == "" then
-    return
-  end
-
-  if directory then
-    vim.cmd.cd(data.file)
-  end
-
-  require("nvim-tree.api").tree.open()
-
-  if not directory then
-    local windows = vim.api.nvim_list_wins()
-    if #windows > 1 then
-      vim.api.nvim_set_current_win(windows[2])
-    end
-  end
-end
+-- local function open_nvim_tree(data)
+--   local directory = vim.fn.isdirectory(data.file) == 1
+--
+--   if data.file == "" then
+--     return
+--   end
+--
+--   if directory then
+--     vim.cmd.cd(data.file)
+--   end
+--
+--   require("nvim-tree.api").tree.open()
+--
+--   if not directory then
+--     local windows = vim.api.nvim_list_wins()
+--     if #windows > 1 then
+--       vim.api.nvim_set_current_win(windows[2])
+--     end
+--   end
+-- end
 
 --
 -- This function has been generated from your
@@ -157,7 +157,7 @@ nvim_tree.setup {
     enable = true,
     show_on_dirs = true,
     icons = {
-      hint = "",
+      hint = "",
       info = "",
       warning = "",
       error = "",
@@ -181,4 +181,4 @@ nvim_tree.setup {
 }
 
 -- auto startup
-vim.api.nvim_create_autocmd({"VimEnter"}, { callback = open_nvim_tree})
+-- vim.api.nvim_create_autocmd({"VimEnter"}, { callback = open_nvim_tree})
