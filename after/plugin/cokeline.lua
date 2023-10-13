@@ -3,12 +3,32 @@ local red = "#ed8796"
 local green = "#a6da95"
 local yellow = "#eed49f"
 local comments_fg = "#363a4f"
+local bg_selected = "#1e2030"
+local bg = "#24273a"
 local errors_fg = red
 local warnings_fg = yellow
 local components = {
+  left = {
+    text = '',
+    truncation = { priority = 1 },
+    fg = function(buffer) return buffer.is_focused and bg_selected or bg end,
+    bg = bg,
+  },
+
+  right = {
+    text = '',
+    truncation = { priority = 1 },
+    fg = function(buffer) return buffer.is_focused and bg_selected or bg end,
+    bg = bg,
+  },
   space = {
     text = ' ',
     truncation = { priority = 1 }
+  },
+  space_blank = {
+    text = ' ',
+    truncation = { priority = 1 },
+    bg = bg,
   },
   two_spaces = {
     text = '  ',
@@ -114,7 +134,7 @@ require('cokeline').setup({
   default_hl = {
         bg = function(buffer)
             if buffer.is_focused then
-                return "#1e2030"
+                return bg_selected
             else
                 return nil
             end
@@ -129,8 +149,9 @@ require('cokeline').setup({
         bold = function (buffer) return buffer.is_focused end,
   },
   components = {
-    components.space,
-    components.separator,
+    -- components.space,
+    -- components.separator,
+    components.left,
     components.space,
     components.devicon,
     components.space,
@@ -141,6 +162,8 @@ require('cokeline').setup({
     components.two_spaces,
     components.close_or_unsaved,
     components.space,
+    components.right,
+    components.space_blank,
   },
     -- Left sidebar to integrate nicely with file explorer plugins.
     -- This is a table containing a `filetype` key and a list of `components` to
@@ -155,8 +178,8 @@ require('cokeline').setup({
         components = {
             {
                 text = ' ',
-                fg = "#1e2030",
-                bg = "#1e2030",
+                fg = bg_selected,
+                bg = bg_selected,
             }
         },
     },

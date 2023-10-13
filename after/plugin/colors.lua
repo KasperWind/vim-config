@@ -1,6 +1,5 @@
 -- use command line :set background=light 
 
-
 local temp = os.date("*t", os.time())
 local h = tonumber(temp.hour)
 if h >= 8 and h < 20 then
