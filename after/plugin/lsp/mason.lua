@@ -1,22 +1,22 @@
 local servers = {
-	"asm_lsp",
+--	"asm_lsp",
 	"lua_ls",
-	"cssls",
-	"html",
-	"tsserver",
-	"pyright",
-	"bashls",
-	"jsonls",
-	"yamlls",
+--	"cssls",
+--	"html",
+--	"tsserver",
+--	"pyright",
+--	"bashls",
+--	"jsonls",
+--	"yamlls",
 	"clangd",
-	"gopls",
-    "rust_analyzer",
-	"tsserver",
+--	"gopls",
+--	"rust_analyzer",
+--	"tsserver",
 --	"hls",
-	"ocamllsp",
-	"cmake",
-	"taplo",
-	"sqlls"
+--	"ocamllsp",
+--	"cmake",
+--	"taplo",
+--	"sqlls"
 	-- "zls"
 }
 
