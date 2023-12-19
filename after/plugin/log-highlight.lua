@@ -1,0 +1,5 @@
+-- local status_ok, hl = pcall(require, "log-highlight")
+-- if not status_ok then
+--   print('log-highlight not loaded')
+--   return
+-- end

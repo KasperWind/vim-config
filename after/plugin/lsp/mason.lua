@@ -12,12 +12,13 @@ local servers = {
 	"gopls",
     "rust_analyzer",
 	"tsserver",
+    "svelte",
 --	"hls",
 	"ocamllsp",
 	"cmake",
 	"taplo",
-	"sqlls"
-	-- "zls"
+	"sqlls",
+	-- "zls",
 }
 
 local settings = {
@@ -45,6 +46,7 @@ if not lspconfig_status_ok then
 end
 
 local opts = {}
+
 
 for _, server in pairs(servers) do
 	opts = {

@@ -6,7 +6,9 @@ end
 -- See `:help nvim-treesitter`
 treesitter.setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'tsx', 'dart', 'haskell', 'bash', 'dockerfile', 'cmake', 'yaml', 'toml', 'svelte', 'proto', 'sql' },
+  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 
+        'typescript', 'tsx', 'dart', 'haskell', 'bash', 'dockerfile', 'cmake', 'yaml', 'toml', 'svelte', 'proto', 'sql', 'swift', 
+        'html', 'htmldjango' },
 
   highlight = { enable = true },
   rainbow = {

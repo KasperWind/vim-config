@@ -111,5 +111,6 @@ return function(use)
 
   -- text edit tools
   use 'johmsalas/text-case.nvim'
+  -- use {'fei6409/log-highlight.nvim'}
 
 end
