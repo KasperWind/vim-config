@@ -7,13 +7,10 @@ return {
     {
         "williamboman/mason-lspconfig.nvim",
         dependencies = {
-            "hrsh7th/nvim-cmp",
-            "hrsh7th/cmp-nvim-lsp",
-            "hrsh7th/cmp-nvim-lua",
-            "hrsh7th/cmp-buffer", -- buffer completions
-            "hrsh7th/cmp-path", -- path completions
-            "hrsh7th/cmp-cmdline", -- cmdline completions
-            "saadparwaiz1/cmp_luasnip", -- snippet completions
+            {
+                "j-hui/fidget.nvim",
+                opts = {},
+            },
         },
         config = function()
             require("mason-lspconfig").setup({
