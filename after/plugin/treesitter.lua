@@ -7,12 +7,12 @@ end
 treesitter.setup {
   -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = {
-        -- 'c',
-        -- 'cpp',
+        'c',
+        'cpp',
         -- 'go',
         'lua',
         -- 'python',
-        -- 'rust',
+        'rust',
         -- 'typescript',
         -- 'tsx',
         -- 'dart',
@@ -27,7 +27,7 @@ treesitter.setup {
         -- 'sql',
         -- 'swift',
         -- 'html',
-        -- 'htmldjango'
+        'htmldjango'
     },
 
   highlight = { enable = true },

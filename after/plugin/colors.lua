@@ -16,7 +16,7 @@ end
 require("catppuccin").setup({
   background = {
     light = "latte",
-    dark = "macchiato",
+    dark = "mocha",
   },
   integrations = {
       cmp = true,
