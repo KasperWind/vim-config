@@ -29,4 +29,9 @@ return {
             keymap("n", "<leader>ut", vim.cmd.UndotreeToggle, opts)
         end
     },
+    {
+        'numToStr/Comment.nvim',
+        opts = {},
+        lazy = false,
+    }
 }
