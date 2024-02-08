@@ -1,6 +1,7 @@
 local ensure_installed = {
     'lua_ls',
-    'clangd'
+    'clangd',
+    'tsserver',
 }
 return {
     "neovim/nvim-lspconfig",
@@ -57,5 +58,5 @@ return {
             })
 
         end
-    }
+    },
 }
