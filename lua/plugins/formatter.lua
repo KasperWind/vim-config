@@ -52,6 +52,9 @@ return {
                     json = {
                         require("formatter.filetypes.json").prettier,
                     },
+                    rust = {
+                        require("formatter.filetypes.rust").rustfmt,
+                    },
 					-- Use the special "*" filetype for defining formatter configurations on
 					-- any filetype
 					["*"] = {
