@@ -2,6 +2,22 @@ local ensure_installed = {
     'lua_ls',
     'clangd',
     'tsserver',
+--	"asm_lsp",
+--	"cssls",
+--	"html",
+--	"pyright",
+--	"bashls",
+--	"jsonls",
+--	"yamlls",
+--  "gopls",
+    "rust_analyzer",
+--  "svelte",
+--	"hls",
+--	"ocamllsp",
+--	"cmake",
+--	"taplo",
+--	"sqlls"
+--  "zls"
 }
 return {
     "neovim/nvim-lspconfig",
