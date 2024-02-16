@@ -75,4 +75,15 @@ return {
 
         end
     },
+    {
+        "quick-lint/quick-lint-js",
+        cond = function(plugin)
+            -- TODO(strager): Don't make this happen multiple times.
+            plugin.dir = plugin.dir .. "/plugin/vim/quick-lint-js.vim"
+            return true
+        end,
+        config = function()
+            require("lspconfig/quick_lint_js").setup {}
+        end,
+    }
 }
