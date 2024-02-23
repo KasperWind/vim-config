@@ -85,5 +85,11 @@ return {
         config = function()
             require("lspconfig/quick_lint_js").setup {}
         end,
-    }
+    },
+    {
+        "folke/trouble.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        opts = {
+        },
+    },
 }
