@@ -17,7 +17,9 @@ local ensure_installed = {
 --	"cmake",
 --	"taplo",
 --	"sqlls"
---  "zls"
+}
+local ensure_setup = {
+    "zls",
 }
 return {
     "neovim/nvim-lspconfig",
@@ -44,6 +46,21 @@ return {
             local handlers = require("lsp.handlers")
 
             for _, server in pairs(ensure_installed) do
+                opts = {
+                    on_attach = handlers.on_attach,
+                    capabilities = handlers.capabilities,
+                }
+
+                server = vim.split(server, "@")[1]
+
+                local require_ok, conf_opts = pcall(require, "lsp.settings." .. server)
+                if require_ok then
+                    opts = vim.tbl_deep_extend("force", conf_opts, opts)
+                end
+
+                lspconfig[server].setup(opts)
+            end
+            for _, server in pairs(ensure_setup) do
                 opts = {
                     on_attach = handlers.on_attach,
                     capabilities = handlers.capabilities,

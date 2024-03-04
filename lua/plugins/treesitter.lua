@@ -4,7 +4,8 @@ local ensure_installed = {
     "vim",
     "vimdoc",
     "javascript",
-    "html"
+    "html",
+    "zig"
 }
 return {
     {
