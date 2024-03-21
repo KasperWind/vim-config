@@ -40,7 +40,7 @@ return {
                 prompt_prefix = " ",
                 selection_caret = " ",
                 path_display = { "smart" },
-                file_ignore_patterns = { ".git/", "node_modules", "target", "build" },
+                file_ignore_patterns = { ".git/", "node_modules", "target", "build", "bin", "obj" },
 
                 mappings = {
                     i = {
@@ -68,9 +68,9 @@ return {
                 },
             }
 
+            print("telescope")
             pcall(require('telescope').load_extension, 'fzf')
             pcall(require('telescope').load_extension, 'media_files')
-            print("telescope")
         end,
     },
 }
