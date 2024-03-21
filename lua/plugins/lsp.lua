@@ -7,7 +7,7 @@ local ensure_installed = {
 --	"html",
 --	"pyright",
 --	"bashls",
---	"jsonls",
+	"jsonls",
 --	"yamlls",
 --  "gopls",
     "rust_analyzer",
@@ -20,6 +20,9 @@ local ensure_installed = {
 }
 local ensure_setup = {
     "zls",
+    "zls",
+    "omnisharp",
+    "jsonls"
 }
 return {
     "neovim/nvim-lspconfig",
@@ -92,7 +95,7 @@ return {
 
         end
     },
-    {
+--    {
 --        "quick-lint/quick-lint-js",
 --        cond = function(plugin)
 --            -- TODO(strager): Don't make this happen multiple times.
@@ -102,7 +105,7 @@ return {
 --        config = function()
 --            require("lspconfig/quick_lint_js").setup {}
 --        end,
-    },
+--    },
     {
         "folke/trouble.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },

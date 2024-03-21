@@ -3,6 +3,9 @@ return {
         'nvim-telescope/telescope-fzf-native.nvim', build = 'make',
     },
     {
+        'nvim-telescope/telescope-media-files.nvim'
+    },
+    {
         'nvim-telescope/telescope.nvim', tag = '0.1.5',
         dependencies = {
             'nvim-lua/plenary.nvim',
@@ -67,6 +70,20 @@ return {
 
             pcall(require('telescope').load_extension, 'fzf')
             pcall(require('telescope').load_extension, 'media_files')
+            print("telescope")
         end,
     },
 }
+
+    -- Fuzzy Finder (files, lsp, etc)
+    -- use {
+    --     'nvim-telescope/telescope.nvim',
+    --     branch = '0.1.x',
+    --     requires = { 'nvim-lua/plenary.nvim' },
+    --
+    --
+    -- }
+    --
+    -- -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
+    -- use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
+    --use 'nvim-telescope/telescope-media-files.nvim'

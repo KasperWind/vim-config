@@ -31,5 +31,11 @@ return {
         'numToStr/Comment.nvim',
         opts = {},
         lazy = false,
+    },
+    {
+    'fei6409/log-highlight.nvim',
+        config = function()
+            require('log-highlight').setup {}
+        end,
     }
 }
