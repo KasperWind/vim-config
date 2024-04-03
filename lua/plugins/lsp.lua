@@ -2,26 +2,25 @@ local ensure_installed = {
     'lua_ls',
     'clangd',
     'tsserver',
---	"asm_lsp",
---	"cssls",
---	"html",
---	"pyright",
---	"bashls",
-	"jsonls",
---	"yamlls",
---  "gopls",
+    --	"asm_lsp",
+    --	"cssls",
+    "html",
+    --	"pyright",
+    --	"bashls",
+    "jsonls",
+    --	"yamlls",
+    --  "gopls",
     "rust_analyzer",
---  "svelte",
---	"hls",
---	"ocamllsp",
---	"cmake",
---	"taplo",
---	"sqlls"
+    "svelte",
+    --	"hls",
+    --	"ocamllsp",
+    --	"cmake",
+    --	"taplo",
+    "sqlls"
 }
 local ensure_setup = {
     "zls",
-    "zls",
-    "omnisharp",
+    -- "omnisharp",
     "jsonls"
 }
 return {
@@ -92,26 +91,26 @@ return {
                     }
                 }
             })
-
         end
     },
---    {
+    {
 --        "quick-lint/quick-lint-js",
---        cond = function(plugin)
---            -- TODO(strager): Don't make this happen multiple times.
---            plugin.dir = plugin.dir .. "/plugin/vim/quick-lint-js.vim"
---            return true
---        end,
---        config = function()
---            require("lspconfig/quick_lint_js").setup {}
---        end,
---    },
+--        tag = '3.2.0',
+        --       cond = function(plugin)
+        --           -- TODO(strager): Don't make this happen multiple times.
+        --           plugin.dir = plugin.dir .. "/plugin/vim/quick-lint-js.vim"
+        --           return true
+        --       end,
+        --       config = function()
+        --           require("lspconfig/quick_lint_js").setup {}
+        --       end,
+    },
     {
         "folke/trouble.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
         opts = {
         },
-        config = function ()
+        config = function()
             vim.keymap.set("n", "<leader>xx", function() require("trouble").toggle() end)
             vim.keymap.set("n", "<leader>xw", function() require("trouble").toggle("workspace_diagnostics") end)
             vim.keymap.set("n", "<leader>xd", function() require("trouble").toggle("document_diagnostics") end)

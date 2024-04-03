@@ -18,6 +18,7 @@ require("lazy").setup("plugins")
 
 require("options")
 require("keymaps")
+require("filetypes")
 
 
 -- The line beneath this is called `modeline`. See `:help modeline`
