@@ -67,8 +67,6 @@ return {
                     }
                 },
             }
-
-            print("telescope")
             pcall(require('telescope').load_extension, 'fzf')
             pcall(require('telescope').load_extension, 'media_files')
         end,

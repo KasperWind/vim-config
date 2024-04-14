@@ -5,11 +5,18 @@ return {
     {
         "nvim-lua/plenary.nvim",
     },
-    "folke/neodev.nvim",
-    "folke/which-key.nvim",
+    {
+        "folke/neodev.nvim",
+        opts = {},
+    },
+    {
+        "folke/which-key.nvim",
+        opts = {},
+    },
     {
         "folke/neoconf.nvim",
-        cmd = "Neoconf"
+        cmd = "Neoconf",
+        opts = { },
     },
     {
         "folke/todo-comments.nvim",
@@ -20,11 +27,21 @@ return {
         opts = { },
     },
     {
+        "RRethy/nvim-base16",
+    },
+    {
         "nvim-lualine/lualine.nvim",
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-        config = function()
-            require("lualine").setup()
-        end
+        dependencies = { "nvim-tree/nvim-web-devicons"},
+        opts = {
+            options = {
+                theme = 'jellybeans',
+                component_separators = { left = '|', right = '|'},
+                section_separators = { left = '', right = ''},
+            },
+        },
+        -- config = function()
+        --     require("lualine").setup({})
+        -- end
     },
     {
         "mbbill/undotree",

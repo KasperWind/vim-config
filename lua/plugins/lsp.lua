@@ -34,6 +34,7 @@ return {
             },
         },
         config = function()
+            require("neoconf").setup({})
             require("mason-lspconfig").setup({
                 ensure_installed = ensure_installed,
                 automatic_installation = true,
