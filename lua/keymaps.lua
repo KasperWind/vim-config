@@ -39,7 +39,10 @@ keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- NvimTree
-keymap("n", "<leader>n", ":NvimTreeToggle<CR>", opts)
+--keymap("n", "<leader>n", ":NvimTreeToggle<CR>", opts)
+
+-- Oil
+keymap("n", "<leader>n", ":Oil<CR>", opts)
 
 -- Visual --
 -- Stay in indent mode

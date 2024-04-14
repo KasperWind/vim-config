@@ -16,7 +16,7 @@ return {
     {
         "folke/neoconf.nvim",
         cmd = "Neoconf",
-        opts = { },
+        opts = {},
     },
     {
         "folke/todo-comments.nvim",
@@ -24,19 +24,19 @@ return {
         keys = {
             { "<leader>st", "<cmd>TodoTelescope<cr>", desc = "Todo telescope" }
         },
-        opts = { },
+        opts = {},
     },
     {
         "RRethy/nvim-base16",
     },
     {
         "nvim-lualine/lualine.nvim",
-        dependencies = { "nvim-tree/nvim-web-devicons"},
+        dependencies = { "nvim-tree/nvim-web-devicons" },
         opts = {
             options = {
                 theme = 'jellybeans',
-                component_separators = { left = '|', right = '|'},
-                section_separators = { left = '', right = ''},
+                component_separators = { left = '|', right = '|' },
+                section_separators = { left = '', right = '' },
             },
         },
     },
@@ -55,9 +55,14 @@ return {
         lazy = false,
     },
     {
-    'fei6409/log-highlight.nvim',
+        'fei6409/log-highlight.nvim',
         config = function()
             require('log-highlight').setup {}
         end,
-    }
+    },
+    {
+        'stevearc/oil.nvim',
+        opts = {},
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+    },
 }
