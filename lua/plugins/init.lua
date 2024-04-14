@@ -39,9 +39,6 @@ return {
                 section_separators = { left = '', right = ''},
             },
         },
-        -- config = function()
-        --     require("lualine").setup({})
-        -- end
     },
     {
         "mbbill/undotree",
