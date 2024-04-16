@@ -27,9 +27,6 @@ return {
         opts = {},
     },
     {
-        "RRethy/nvim-base16",
-    },
-    {
         "nvim-lualine/lualine.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
         opts = {
@@ -50,12 +47,21 @@ return {
     {
         "mbbill/undotree",
         opts = {},
-        config = function()
-            local opts = { noremap = true, silent = true }
-            local keymap = vim.keymap.set
-            keymap("n", "<leader>ut", vim.cmd.UndotreeToggle, opts)
-        end
+        keys = {
+            { "<leader>ut", vim.cmd.UndotreeToggle, desc = "Todo telescope" }
+        },
     },
+    {
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        opts = {},
+        keys = {
+            { "<leader>a", "<cmd>lua require('harpoon'):list():add()<CR>", desc = "Harpoon [A]dd file to list" },
+            { "<leader>h", "<cmd>lua require('harpoon').ui:toggle_quick_menu(require('harpoon'):list())<CR>", desc = "Harpoon [A]dd file to list" },
+        },
+    },
+
     {
         "numToStr/Comment.nvim",
         opts = {},
@@ -76,8 +82,8 @@ return {
         "nvim-pack/nvim-spectre",
         dependencies = { "nvim-lua/plenary.nvim" },
         keys = {
-            { "<leader>S", "<cmd>lua require('spectre').toggle()<CR>", desc = "Toggle spectre", mode = { "n", "v" } },
-            { "<leader>sw", "<cmd>lua require('spectre').open_visual({select_word=true})<CR>", desc = "Search current word", mode = { "n", "v" } },
+            { "<leader>S",  "<cmd>lua require('spectre').toggle()<CR>",                             desc = "Toggle spectre",         mode = { "n", "v" } },
+            { "<leader>sw", "<cmd>lua require('spectre').open_visual({select_word=true})<CR>",      desc = "Search current word",    mode = { "n", "v" } },
             { "<leader>sp", "<cmd>lua require('spectre').open_file_search({select_word=true})<CR>", desc = "Search on current file", mode = { "n", "v" } },
         },
     },
