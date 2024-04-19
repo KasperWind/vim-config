@@ -111,13 +111,13 @@ return {
         dependencies = { "nvim-tree/nvim-web-devicons" },
         opts = {
         },
-        config = function()
-            vim.keymap.set("n", "<leader>xx", function() require("trouble").toggle() end)
-            vim.keymap.set("n", "<leader>xw", function() require("trouble").toggle("workspace_diagnostics") end)
-            vim.keymap.set("n", "<leader>xd", function() require("trouble").toggle("document_diagnostics") end)
-            vim.keymap.set("n", "<leader>xq", function() require("trouble").toggle("quickfix") end)
-            vim.keymap.set("n", "<leader>xl", function() require("trouble").toggle("loclist") end)
-            vim.keymap.set("n", "gR", function() require("trouble").toggle("lsp_references") end)
-        end
+        keys = {
+            { "<leader>xx", function() require("trouble").toggle() end, desc = "Toggle Trouble"},
+            { "<leader>xw", function() require("trouble").toggle("workspace_diagnostics") end, desc = "Trouble workspace diagnostics"},
+            { "<leader>xd", function() require("trouble").toggle("document_diagnostics") end, desc = "Trouble document diagnostics"},
+            { "<leader>xq", function() require("trouble").toggle("quickfix") end, desc = "Trouble to quickfix list"},
+            { "<leader>xl", function() require("trouble").toggle("loclist") end, desc = "Trouble to loation list"},
+            { "gR", function() require("trouble").toggle("lsp_references") end, desc = "Trouble goto references"},
+        },
     },
 }
