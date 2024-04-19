@@ -5,7 +5,14 @@ local ensure_installed = {
     "vimdoc",
     "javascript",
     "html",
-    -- "zig",
+    "htmldjango",
+    "markdown",
+    "zig",
+    "rust",
+    "toml",
+    "typescript",
+    "sql",
+    "svelte"
 }
 return {
     {
