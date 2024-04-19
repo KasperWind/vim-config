@@ -1,12 +1,14 @@
 return {
     {
         'tpope/vim-fugitive',
-        config = function()
-            local opts = { noremap = true, silent = true }
-            local keymap = vim.api.nvim_set_keymap
-            keymap("n", "<leader>gs", ':Git<CR>', opts)
-            keymap("n", "<leader>gp", ':Git push<CR>', opts)
-        end
+        opts = {
+        },
+        keys = {
+            { "<leader>gs", ':Git<CR>', desc = "Open [G]it [S]tatus" },
+            { "<leader>gp", ':Git push<CR>', desc = "[G]it [p]ush" },
+            { "<leader>gP", ':Git pull<CR>', desc = "[G]it [p]ull" },
+            { "<leader>ggd", ':Git diff<CR>', desc = "[G]it [D]iff" },
+        },
     },
     'tpope/vim-rhubarb',
     {
