@@ -75,7 +75,13 @@ return {
     },
     {
         "stevearc/oil.nvim",
-        opts = {},
+        opts = {
+            keymaps = {
+                ["<C-l>"] = false,
+                ["<C-h>"] = false,
+                ["<C-r>"] = "actions.refresh",
+            }
+        },
         dependencies = { "nvim-tree/nvim-web-devicons" },
     },
     {
