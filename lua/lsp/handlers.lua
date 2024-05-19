@@ -79,6 +79,13 @@ M.on_attach = function(client, bufnr)
 		client.server_capabilities.documentFormattingProvider = false
 	end
 
+    if client.name == "rust_analyzer" then
+        local opts = function (desc)
+            return { desc=desc, noremap = true, silent = true }
+        end
+        vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>bb", "<cmd>!cargo build<CR>", opts("Cargo Build"))
+    end
+
 	if client.name == "sumneko_lua" then
 		client.server_capabilities.documentFormattingProvider = false
 	end

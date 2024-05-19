@@ -12,13 +12,14 @@ local ensure_installed = {
     "toml",
     "typescript",
     "sql",
-    "svelte"
+    "svelte",
+    "css",
 }
 return {
     {
         'nvim-treesitter/nvim-treesitter',
         dependencies = {
-            'nvim-treesitter/nvim-treesitter-textobjects',
+            -- 'nvim-treesitter/nvim-treesitter-textobjects',
             'nvim-treesitter/nvim-treesitter-context'
         },
         build = ':TSUpdate',

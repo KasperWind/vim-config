@@ -57,7 +57,7 @@ return {
         dependencies = { "nvim-lua/plenary.nvim" },
         opts = {},
         keys = {
-            { "<leader>a", "<cmd>lua require('harpoon'):list():add()<CR>", desc = "Harpoon [A]dd file to list" },
+            { "<leader>a", "<cmd>lua require('harpoon'):list():add()<CR>",                                    desc = "Harpoon [A]dd file to list" },
             { "<leader>h", "<cmd>lua require('harpoon').ui:toggle_quick_menu(require('harpoon'):list())<CR>", desc = "Open Harpoon quick menu" },
         },
     },
@@ -85,6 +85,17 @@ return {
         dependencies = { "nvim-tree/nvim-web-devicons" },
     },
     {
+        "nvim-tree/nvim-tree.lua",
+        version = "*",
+        lazy = false,
+        dependencies = {
+            "nvim-tree/nvim-web-devicons",
+        },
+        config = function()
+            require("nvim-tree").setup {}
+        end,
+    },
+    {
         "nvim-pack/nvim-spectre",
         dependencies = { "nvim-lua/plenary.nvim" },
         keys = {
@@ -94,4 +105,3 @@ return {
         },
     },
 }
-

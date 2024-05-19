@@ -12,15 +12,17 @@ local ensure_installed = {
     --  "gopls",
     "rust_analyzer",
     "svelte",
+    "tailwindcss",
     --	"hls",
     --	"ocamllsp",
     --	"cmake",
     --	"taplo",
+    "omnisharp",
     "sqlls"
 }
 local ensure_setup = {
     "zls",
-    -- "omnisharp",
+    "omnisharp",
     "jsonls"
 }
 return {
@@ -53,6 +55,32 @@ return {
                     on_attach = handlers.on_attach,
                     capabilities = handlers.capabilities,
                 }
+
+
+                if server == "rust_analyzer" then
+                    opts.settings = {
+                        ["rust-analyzer"] = {
+                            imports = {
+                                granularity = {
+                                    group = "module",
+                                },
+                                prefix = "self",
+                            },
+                            cargo = {
+                                target = "thumbv7em-none-eabihf",
+                                buildScripts = {
+                                    enable = true,
+                                },
+                            },
+                            check = {
+                                allTargets = false,
+                            },
+                            procMacro = {
+                                enable = true,
+                            },
+                        }
+                    }
+                end
 
                 server = vim.split(server, "@")[1]
 
@@ -95,8 +123,8 @@ return {
         end
     },
     {
---        "quick-lint/quick-lint-js",
---        tag = '3.2.0',
+        --        "quick-lint/quick-lint-js",
+        --        tag = '3.2.0',
         --       cond = function(plugin)
         --           -- TODO(strager): Don't make this happen multiple times.
         --           plugin.dir = plugin.dir .. "/plugin/vim/quick-lint-js.vim"
@@ -112,12 +140,12 @@ return {
         opts = {
         },
         keys = {
-            { "<leader>xx", function() require("trouble").toggle() end, desc = "Toggle Trouble"},
-            { "<leader>xw", function() require("trouble").toggle("workspace_diagnostics") end, desc = "Trouble workspace diagnostics"},
-            { "<leader>xd", function() require("trouble").toggle("document_diagnostics") end, desc = "Trouble document diagnostics"},
-            { "<leader>xq", function() require("trouble").toggle("quickfix") end, desc = "Trouble to quickfix list"},
-            { "<leader>xl", function() require("trouble").toggle("loclist") end, desc = "Trouble to loation list"},
-            { "gR", function() require("trouble").toggle("lsp_references") end, desc = "Trouble goto references"},
+            { "<leader>xx", function() require("trouble").toggle() end,                        desc = "Toggle Trouble" },
+            { "<leader>xw", function() require("trouble").toggle("workspace_diagnostics") end, desc = "Trouble workspace diagnostics" },
+            { "<leader>xd", function() require("trouble").toggle("document_diagnostics") end,  desc = "Trouble document diagnostics" },
+            { "<leader>xq", function() require("trouble").toggle("quickfix") end,              desc = "Trouble to quickfix list" },
+            { "<leader>xl", function() require("trouble").toggle("loclist") end,               desc = "Trouble to loation list" },
+            { "gR",         function() require("trouble").toggle("lsp_references") end,        desc = "Trouble goto references" },
         },
     },
 }

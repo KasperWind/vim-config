@@ -44,10 +44,10 @@ keymap("n", "<S-l>", ":bnext<CR>", get_opts(""))
 keymap("n", "<S-h>", ":bprevious<CR>", get_opts(""))
 
 -- NvimTree
---keymap("n", "<leader>n", ":NvimTreeToggle<CR>", get_opts(""))
+keymap("n", "<leader>N", ":NvimTreeToggle<CR>", get_opts("Toggle NvimTree"))
 
 -- Oil
-keymap("n", "<leader>n", ":Oil<CR>", get_opts(""))
+keymap("n", "<leader>n", ":Oil<CR>", get_opts("Open Oil.nvim file manager"))
 
 -- Visual --
 -- Stay in indent mode
