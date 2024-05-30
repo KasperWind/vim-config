@@ -85,6 +85,17 @@ return {
         dependencies = { "nvim-tree/nvim-web-devicons" },
     },
     {
+        "albenisolmos/telescope-oil.nvim",
+        lazy = false,
+        keys = {
+            { "<leader>no", "<cmd>lua require('telescope').extensions.oil.oil()<CR>", desc = "Oil.nvim open telescope diaglog", mode = { "n", "v" } },
+        },
+        config = function()
+            require("telescope").load_extension("oil")
+        end,
+        dependencies = { "stevearc/oil.nvim", "nvim-telescope/telescope.nvim", },
+    },
+    {
         "nvim-tree/nvim-tree.lua",
         version = "*",
         lazy = false,

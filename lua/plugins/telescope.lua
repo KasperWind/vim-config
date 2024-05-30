@@ -69,6 +69,7 @@ return {
             }
             pcall(require('telescope').load_extension, 'fzf')
             pcall(require('telescope').load_extension, 'media_files')
+            pcall(require('telescope').load_extension, 'oil')
         end,
     },
 }
