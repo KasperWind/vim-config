@@ -82,6 +82,21 @@ return {
                 ["<C-r>"] = "actions.refresh",
             }
         },
+        keys = {
+            { "<leader>ns",
+                function() 
+                    require('oil').open() 
+                    local start = vim.api.nvim_get_current_win()
+                    vim.cmd('vsplit')
+                    local win = vim.api.nvim_get_current_win()
+                    local buf = vim.api.nvim_create_buf(true, true) 
+                    vim.api.nvim_win_set_buf(win, buf)
+                    local pwd = vim.fn.getcwd()
+                    require('oil').open(pwd) 
+                    vim.api.nvim_set_current_win(start)
+                end, 
+                desc = "Oil.nvim open split view", mode = { "n", "v" } },
+        },
         dependencies = { "nvim-tree/nvim-web-devicons" },
     },
     {
