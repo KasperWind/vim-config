@@ -8,6 +8,8 @@ return {
             { "<leader>gp", ':Git push<CR>', desc = "[G]it [p]ush" },
             { "<leader>gP", ':Git pull<CR>', desc = "[G]it [p]ull" },
             { "<leader>ggd", ':Git diff<CR>', desc = "[G]it [D]iff" },
+            { "<leader>gl", ':Git log --abbrev-commit<CR>', desc = "[G]it [L]og" },
+            { "<leader>ggl", ':Git log --pretty=short --graph --abbrev-commit<CR>', desc = "[G]it [L]og" },
         },
     },
     'tpope/vim-rhubarb',
