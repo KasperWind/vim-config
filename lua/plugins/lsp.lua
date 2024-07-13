@@ -56,32 +56,6 @@ return {
                     capabilities = handlers.capabilities,
                 }
 
-
-                if server == "rust_analyzer" then
-                    opts.settings = {
-                        ["rust-analyzer"] = {
-                            imports = {
-                                granularity = {
-                                    group = "module",
-                                },
-                                prefix = "self",
-                            },
-                            cargo = {
-                                target = "thumbv7em-none-eabihf",
-                                buildScripts = {
-                                    enable = true,
-                                },
-                            },
-                            check = {
-                                allTargets = false,
-                            },
-                            procMacro = {
-                                enable = true,
-                            },
-                        }
-                    }
-                end
-
                 server = vim.split(server, "@")[1]
 
                 local require_ok, conf_opts = pcall(require, "lsp.settings." .. server)
