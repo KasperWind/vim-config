@@ -1,16 +1,16 @@
+local lua = 'Lua'
 return {
 	settings = {
-
-		Lua = {
+        [lua] = {
 			diagnostics = {
 				globals = { "vim" },
 			},
-			workspace = {
-				library = {
-					[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-					[vim.fn.stdpath("config") .. "/lua"] = true,
-				},
-			},
+			-- workspace = {
+			-- 	library = {
+			-- 		-- [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+			-- 		-- [vim.fn.stdpath("config") .. "/lua"] = true,
+			-- 	},
+			-- },
 		},
 	},
 }

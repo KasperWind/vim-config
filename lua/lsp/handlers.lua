@@ -89,7 +89,10 @@ M.on_attach = function(client, bufnr)
 	if client.name == "sumneko_lua" then
 		client.server_capabilities.documentFormattingProvider = false
 	end
+    M.on_attach_required(client, bufnr)
+end
 
+M.on_attach_required = function (client, bufnr)
     vim.bo[bufnr].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
 	lsp_keymaps(bufnr)
