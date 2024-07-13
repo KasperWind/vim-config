@@ -3,14 +3,15 @@ return {
 	settings = {
         [lua] = {
 			diagnostics = {
-				globals = { "vim" },
+				globals = { "vim", "neovim" },
 			},
-			-- workspace = {
-			-- 	library = {
-			-- 		-- [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-			-- 		-- [vim.fn.stdpath("config") .. "/lua"] = true,
-			-- 	},
-			-- },
+			workspace = {
+				library = {
+                    vim.env.VIMRUNTIME,
+                    vim.fn.expand('config') .. '/lua',
+				},
+                checkThirdParty = false,
+			},
 		},
 	},
 }
