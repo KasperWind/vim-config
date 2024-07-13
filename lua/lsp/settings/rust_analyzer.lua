@@ -1,8 +1,13 @@
 local handlers = require('lsp.handlers')
 return {
     on_init = function (client)
-        local path = client.workspace_folders[1].name
-
+        local path = client.workspace_folders[1].name .. "/config.toml"
+        local filereadable = vim.fn.filereadable(path)
+        if filereadable == 1 then
+            local _ = vim.fn.readfile(path)
+            client.config.settings["rust-analyzer"].cargo.target = "armv7a-none-eabi"
+            client.config.settings["rust-analyzer"].check.allTargets = false
+        end
 
         client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
         return true
@@ -24,12 +29,13 @@ return {
             },
             cargo = {
                 -- target = "thumbv7em-none-eabihf",
+                -- target = "armv7a-none-eabi",
                 buildScripts = {
                     enable = true,
                 },
             },
             check = {
-                allTargets = true,
+                -- allTargets = false,
             },
             procMacro = {
                 enable = true,
