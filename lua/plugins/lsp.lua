@@ -23,7 +23,8 @@ local ensure_installed = {
 local ensure_setup = {
     "zls",
     "omnisharp",
-    "jsonls"
+    "jsonls",
+    "gopls"
 }
 return {
     "neovim/nvim-lspconfig",
