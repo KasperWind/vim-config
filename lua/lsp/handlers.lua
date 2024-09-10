@@ -71,6 +71,7 @@ local function lsp_keymaps(bufnr)
     keymap(bufnr, "n", "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>",
         opts("LSP: go to previous diagnostic"))
     keymap(bufnr, "n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts("LSP: rename symbol under cursor"))
+    keymap(bufnr, "n", "<leader>lR", "<cmd>LspRestart<cr>", opts("LSP: Restart (recompile)"))
     keymap(bufnr, "n", "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts("LSP: Signature help"))
     keymap(bufnr, "i", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts("LSP: signature help (insert mode)"))
     keymap(bufnr, "n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts("LSP: diagnostic open quick list"))
