@@ -1,17 +1,32 @@
 return {
     {
-        'tpope/vim-fugitive',
-        opts = {
+        "NeogitOrg/neogit",
+        dependencies = {
+            "nvim-lua/plenary.nvim", -- required
+            "sindrets/diffview.nvim", -- optional - Diff integration
+
+            -- Only one of these is needed, not both.
+            "nvim-telescope/telescope.nvim", -- optional
+            "ibhagwan/fzf-lua",      -- optional
         },
         keys = {
-            { "<leader>gs",  ':Git<CR>',                                            desc = "Open [G]it [S]tatus" },
-            { "<leader>gp",  ':Git push<CR>',                                       desc = "[G]it [p]ush" },
-            { "<leader>gP",  ':Git pull<CR>',                                       desc = "[G]it [p]ull" },
-            { "<leader>ggd", ':Git diff<CR>',                                       desc = "[G]it [D]iff" },
-            { "<leader>gl",  ':Git log --abbrev-commit<CR>',                        desc = "[G]it [L]og" },
-            { "<leader>ggl", ':Git log --pretty=short --graph --abbrev-commit<CR>', desc = "[G]it [L]og" },
+            { "<leader>gs",  ':Neogit<CR>',                                            desc = "Open [G]it [S]tatus" },
         },
+        config = true
     },
+    -- {
+    --     'tpope/vim-fugitive',
+    --     opts = {
+    --     },
+    --     keys = {
+    --         { "<leader>gs",  ':Git<CR>',                                            desc = "Open [G]it [S]tatus" },
+    --         { "<leader>gp",  ':Git push<CR>',                                       desc = "[G]it [p]ush" },
+    --         { "<leader>gP",  ':Git pull<CR>',                                       desc = "[G]it [p]ull" },
+    --         { "<leader>ggd", ':Git diff<CR>',                                       desc = "[G]it [D]iff" },
+    --         { "<leader>gl",  ':Git log --abbrev-commit<CR>',                        desc = "[G]it [L]og" },
+    --         { "<leader>ggl", ':Git log --pretty=short --graph --abbrev-commit<CR>', desc = "[G]it [L]og" },
+    --     },
+    -- },
     'tpope/vim-rhubarb',
     {
         'lewis6991/gitsigns.nvim',
@@ -36,7 +51,7 @@ return {
                         untracked    = { text = '┆' },
                     },
                     signs_staged_enable          = true,
-                    signcolumn                   = true, -- Toggle with `:Gitsigns toggle_signs`
+                    signcolumn                   = true,  -- Toggle with `:Gitsigns toggle_signs`
                     numhl                        = false, -- Toggle with `:Gitsigns toggle_numhl`
                     linehl                       = false, -- Toggle with `:Gitsigns toggle_linehl`
                     word_diff                    = false, -- Toggle with `:Gitsigns toggle_word_diff`
@@ -56,7 +71,7 @@ return {
                     current_line_blame_formatter = '<author>, <author_time:%R> - <summary>',
                     sign_priority                = 6,
                     update_debounce              = 100,
-                    status_formatter             = nil, -- Use default
+                    status_formatter             = nil,   -- Use default
                     max_file_length              = 40000, -- Disable if file is longer than this (in lines)
                     preview_config               = {
                         -- Options passed to nvim_open_win
