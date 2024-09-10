@@ -1,3 +1,6 @@
+local function get_current_working_directory ()
+    return vim.fn.getcwd()
+end
 return {
     {
         "nvim-lua/popup.nvim",
@@ -34,6 +37,9 @@ return {
                 theme = 'gruvbox',
                 component_separators = { left = '|', right = '|' },
                 section_separators = { left = '', right = '' },
+            },
+            sections = {
+                lualine_c = { 'windows', get_current_working_directory  },
             },
             extensions = {
                 'quickfix',
