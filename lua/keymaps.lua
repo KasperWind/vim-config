@@ -90,3 +90,9 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, get_opts(""))
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, get_opts(""))
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, get_opts(""))
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, get_opts(""))
+
+-- Lua remaps
+vim.keymap.set('n', '<leader><leader>r', '<cmd>source %<CR>', get_opts('Source current file'))
+vim.keymap.set('n', '<leader>r', ':.lua<CR>', get_opts('Lua run current line'))
+vim.keymap.set('v', '<leader>r', ':lua<CR>', get_opts('Lua run current selection'))
+
