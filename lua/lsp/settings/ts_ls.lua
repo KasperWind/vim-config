@@ -1,5 +1,5 @@
 return {
-    on_attach = function (client, _)
-        client.server_capabilities.documentFormattingProvider = false
+    on_attach = function(_, _)
+        -- client.server_capabilities.documentFormattingProvider = false
     end,
 }

@@ -14,6 +14,8 @@ local ensure_installed = {
     "sql",
     "svelte",
     "css",
+    "hyprlang",
+    "query",
 }
 return {
     {
@@ -23,7 +25,7 @@ return {
             'nvim-treesitter/nvim-treesitter-context'
         },
         build = ':TSUpdate',
-        config = function ()
+        config = function()
             local configs = require("nvim-treesitter.configs")
 
             configs.setup({
@@ -40,5 +42,11 @@ return {
 
             context.setup()
         end,
-  },
+    },
+    -- {
+    --     'nvim-treesitter/playground',
+    --     dependencies = {
+    --         'nvim-treesitter/nvim-treesitter',
+    --     },
+    -- }
 }
