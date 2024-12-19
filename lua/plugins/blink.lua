@@ -16,7 +16,20 @@ return {
             },
 
             -- experimental signature help support
-            signature = { enabled = true }
+            signature = { enabled = true },
+            completion = {
+                documentation = {
+                    auto_show = true,
+                },
+                menu = {
+                    draw = {
+                        -- columns = { { 'kind_icon' }, { 'label', 'label_description', gap = 1 } },
+                        columns = { { 'kind_icon' }, { 'label' } },
+                    },
+
+                },
+
+            }
         },
         -- allows extending the providers array elsewhere in your config
         -- without having to redefine it
