@@ -47,7 +47,6 @@ return {
                 return
             end
 
-
             local handlers = require("lsp.handlers")
 
             for _, server in pairs(ensure_installed) do

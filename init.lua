@@ -1,5 +1,6 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+vim.deprecate = function () end
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -17,13 +18,17 @@ vim.cmd.colorscheme("sorbet")
 
 require("lazy").setup("plugins")
 
-local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+require("options")
+require("keymaps")
+require("filetypes")
 
-vim.filetype.add({
-  extension = {
-    st = "st",
-  },
-})
+-- local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+--
+-- vim.filetype.add({
+--   extension = {
+--     st = "st",
+--   },
+-- })
 
 -- parser_config.st = {
 --   install_info = {
@@ -55,9 +60,6 @@ vim.filetype.add({
 --   },
 -- }
 
-require("options")
-require("keymaps")
-require("filetypes")
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
