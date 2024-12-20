@@ -17,12 +17,12 @@ local ensure_installed = {
     --	"ocamllsp",
     --	"cmake",
     --	"taplo",
-    "omnisharp",
+    -- "omnisharp",
     "sqlls"
 }
 local ensure_setup = {
     "zls",
-    "omnisharp",
+    -- "omnisharp",
     "jsonls",
     "gopls"
 }
