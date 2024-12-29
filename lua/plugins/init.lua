@@ -63,8 +63,14 @@ return {
         dependencies = { "nvim-lua/plenary.nvim" },
         opts = {},
         keys = {
-            { "<leader>a", "<cmd>lua require('harpoon'):list():add()<CR>",                                    desc = "Harpoon [A]dd file to list" },
-            { "<leader>h", "<cmd>lua require('harpoon').ui:toggle_quick_menu(require('harpoon'):list())<CR>", desc = "Open Harpoon quick menu" },
+            { "<leader>a", function() require('harpoon'):list():add() end,                                    desc = "Harpoon [A]dd file to list" },
+            { "<leader>h", function() require('harpoon').ui:toggle_quick_menu(require('harpoon'):list()) end, desc = "Open Harpoon quick menu" },
+            { "<A-h>",  function() require('harpoon'):list():select(1) end, desc = "Opens file 1 in harpoon list" },
+            { "<A-j>",  function() require('harpoon'):list():select(2) end, desc = "Opens file 1 in harpoon list" },
+            { "<A-k>",  function() require('harpoon'):list():select(3) end, desc = "Opens file 1 in harpoon list" },
+            { "<A-l>",  function() require('harpoon'):list():select(4) end, desc = "Opens file 1 in harpoon list" },
+            { "<A-p>",  function() require('harpoon'):list():prev() end, desc = "Harpoon previuos" },
+            { "<A-n>",  function() require('harpoon'):list():next() end, desc = "Harpoon next" },
         },
     },
 
