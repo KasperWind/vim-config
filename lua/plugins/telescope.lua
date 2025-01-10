@@ -31,6 +31,7 @@ return {
             vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
             vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
             vim.keymap.set('n', '<leader>sr', require('telescope.builtin').git_files, { desc = '[S]earch by git [R]epo' })
+            vim.keymap.set('n', '<leader>sm', require('telescope.builtin').man_pages, { desc = '[S]earch by [M]an pages' })
 
             local actions = require "telescope.actions"
 
