@@ -4,5 +4,7 @@ vim.filetype.add({
         TcIO = 'jsx',
         TcDUT = 'jsx',
         TcPOU = 'jsx',
+        gohtml = 'html',
+        html = 'html',
     }
 })

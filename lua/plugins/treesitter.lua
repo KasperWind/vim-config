@@ -16,6 +16,7 @@ local ensure_installed = {
     "css",
     "hyprlang",
     "query",
+    "go",
 }
 return {
     {
