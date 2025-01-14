@@ -43,14 +43,6 @@ return {
                 path_display = { "smart" },
                 file_ignore_patterns = { ".git/", "node_modules", "target", "build", "bin", "obj" },
 
-                mappings = {
-                    i = {
-                        ["<Down>"] = actions.cycle_history_next,
-                        ["<Up>"] = actions.cycle_history_prev,
-                        ["<C-j>"] = actions.move_selection_next,
-                        ["<C-k>"] = actions.move_selection_previous,
-                        },
-                    },
                 },
                 extensions = {
                     media_files = {
