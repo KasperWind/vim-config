@@ -1,9 +1,20 @@
+function string_to_list(input, delimiter)
+    delimiter = delimiter or ","
+    local result = {}
+    for match in (input .. delimiter):gmatch("(.-)" .. delimiter) do
+        table.insert(result, match)
+    end
+    return result
+end
+
 function SearchManPages(index)
     -- Use the index if provided, otherwise search all sections
     index = index or ""
 
+    local indexes = string_to_list(index, ",")
+
     require('telescope.builtin').man_pages({
-        sections = { index }
+        sections = indexes
     })
 end
 
@@ -47,7 +58,7 @@ return {
             vim.keymap.set('n', '<leader>sr', require('telescope.builtin').git_files, { desc = '[S]earch by git [R]epo' })
             vim.keymap.set('n', '<leader>sm',
                 function()
-                    local user_input = vim.fn.input("Enter sections: ")
+                    local user_input = vim.fn.input("Enter sections (1,7): ")
 
                     SearchManPages(user_input)
                 end, { desc = '[S]earch by [M]an pages' })
