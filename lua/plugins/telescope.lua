@@ -1,3 +1,12 @@
+function SearchManPages(index)
+    -- Use the index if provided, otherwise search all sections
+    index = index or ""
+
+    require('telescope.builtin').man_pages({
+        sections = { index }
+    })
+end
+
 return {
     {
         'nvim-telescope/telescope-fzf-native.nvim', build = 'make',
@@ -6,7 +15,8 @@ return {
         'nvim-telescope/telescope-media-files.nvim'
     },
     {
-        'nvim-telescope/telescope.nvim', tag = '0.1.5',
+        'nvim-telescope/telescope.nvim',
+        tag = '0.1.5',
         dependencies = {
             'nvim-lua/plenary.nvim',
             'nvim-telescope/telescope-fzf-native.nvim',
@@ -15,40 +25,49 @@ return {
             -- Enable telescope fzf native, if installed
 
             -- See `:help telescope.builtin`
-            vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
-            vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
+            vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles,
+                { desc = '[?] Find recently opened files' })
+            vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers,
+                { desc = '[ ] Find existing buffers' })
             vim.keymap.set('n', '<leader>/', function()
                 -- You can pass additional configuration to telescope to change theme, layout, etc.
                 require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
                     winblend = 10,
                     previewer = false,
                 })
-                end, { desc = '[/] Fuzzily search in current buffer' })
+            end, { desc = '[/] Fuzzily search in current buffer' })
 
             vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
             vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
-            vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
+            vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string,
+                { desc = '[S]earch current [W]ord' })
             vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
-            vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+            vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics,
+                { desc = '[S]earch [D]iagnostics' })
             vim.keymap.set('n', '<leader>sr', require('telescope.builtin').git_files, { desc = '[S]earch by git [R]epo' })
-            vim.keymap.set('n', '<leader>sm', require('telescope.builtin').man_pages, { desc = '[S]earch by [M]an pages' })
+            vim.keymap.set('n', '<leader>sm',
+                function()
+                    local user_input = vim.fn.input("Enter sections: ")
+
+                    SearchManPages(user_input)
+                end, { desc = '[S]earch by [M]an pages' })
 
             local actions = require "telescope.actions"
 
             require("telescope").setup {
                 defaults = {
 
-                prompt_prefix = " ",
-                selection_caret = " ",
-                path_display = { "smart" },
-                file_ignore_patterns = { ".git/", "node_modules", "target", "build", "bin", "obj" },
+                    prompt_prefix = " ",
+                    selection_caret = " ",
+                    path_display = { "smart" },
+                    file_ignore_patterns = { ".git/", "node_modules", "target", "build", "bin", "obj" },
 
                 },
                 extensions = {
                     media_files = {
                         -- filetypes whitelist
                         -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
-                        filetypes = {"png", "webp", "jpg", "jpeg"},
+                        filetypes = { "png", "webp", "jpg", "jpeg" },
                         -- find command (defaults to `fd`)
                         find_cmd = "fd"
                     },
