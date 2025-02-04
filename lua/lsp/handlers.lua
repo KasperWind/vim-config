@@ -6,7 +6,6 @@ M.capabilities = require('blink.cmp').get_lsp_capabilities(M.capabilities)
 
 M.setup = function()
     local signs = {
-
         { name = "DiagnosticSignError", text = "" },
         { name = "DiagnosticSignWarn", text = "" },
         { name = "DiagnosticSignHint", text = "" },
@@ -20,7 +19,7 @@ M.setup = function()
     local config = {
         virtual_text = true, -- disable virtual text
         signs = {
-            active = signs, -- show signs
+            active = signs,  -- show signs
         },
         update_in_insert = true,
         underline = true,
@@ -44,6 +43,16 @@ M.setup = function()
     vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
         border = "rounded",
     })
+end
+
+local diagnostic_active = vim.diagnostic.is_enabled()
+local function toggle_diagnostic()
+    diagnostic_active = not diagnostic_active
+    if diagnostic_active then
+        vim.diagnostic.show()
+    else
+        vim.diagnostic.hide()
+    end
 end
 
 local function lsp_keymaps(bufnr)
@@ -70,6 +79,7 @@ local function lsp_keymaps(bufnr)
     keymap(bufnr, "n", "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts("LSP: Signature help"))
     keymap(bufnr, "i", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts("LSP: signature help (insert mode)"))
     keymap(bufnr, "n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts("LSP: diagnostic open quick list"))
+    vim.keymap.set('n', '<leader>lt', toggle_diagnostic, { desc = '[L]SP: [T]oggle diagnostic' })
 end
 
 M.on_attach = function(client, bufnr)
