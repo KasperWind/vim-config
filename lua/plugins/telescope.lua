@@ -1,4 +1,4 @@
-function string_to_list(input, delimiter)
+local function string_to_list(input, delimiter)
     delimiter = delimiter or ","
     local result = {}
     for match in (input .. delimiter):gmatch("(.-)" .. delimiter) do
@@ -10,7 +10,9 @@ end
 function SearchManPages(index)
     -- Use the index if provided, otherwise search all sections
     index = index or ""
-
+    if index == "" then
+        index = "1,2,3,4,5,6,7"
+    end
     local indexes = string_to_list(index, ",")
 
     require('telescope.builtin').man_pages({
