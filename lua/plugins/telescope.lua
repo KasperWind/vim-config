@@ -11,7 +11,7 @@ function SearchManPages(index)
     -- Use the index if provided, otherwise search all sections
     index = index or ""
     if index == "" then
-        index = "1,2,3,4,5,6,7"
+        index = "1,2,3,4,5,6,7,8,9"
     end
     local indexes = string_to_list(index, ",")
 
@@ -60,7 +60,7 @@ return {
             vim.keymap.set('n', '<leader>sr', require('telescope.builtin').git_files, { desc = '[S]earch by git [R]epo' })
             vim.keymap.set('n', '<leader>sm',
                 function()
-                    local user_input = vim.fn.input("Enter sections (1,7): ")
+                    local user_input = vim.fn.input("Enter comma seperated sections: e.g 1,9: ")
 
                     SearchManPages(user_input)
                 end, { desc = '[S]earch by [M]an pages' })

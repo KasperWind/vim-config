@@ -24,7 +24,9 @@ local ensure_setup = {
     "zls",
     -- "omnisharp",
     "jsonls",
-    "gopls"
+    "gopls",
+    "ols"
+
 }
 return {
     "neovim/nvim-lspconfig",
