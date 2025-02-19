@@ -5,6 +5,12 @@ M.capabilities.textDocument.completion.completionItem.snippetSupport = true
 M.capabilities = require('blink.cmp').get_lsp_capabilities(M.capabilities)
 
 M.setup = function()
+    local signs = {
+        { name = "DiagnosticSignError", text = "" },
+        { name = "DiagnosticSignWarn", text = "" },
+        { name = "DiagnosticSignHint", text = "" },
+        { name = "DiagnosticSignInfo", text = "" },
+    }
 
     local config = {
         virtual_text = true, -- disable virtual text
