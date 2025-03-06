@@ -37,6 +37,7 @@ vim.opt.sidescrolloff = 8
 vim.wo.signcolumn = 'yes'
 vim.opt.isfname:append("@-@")
 vim.opt.colorcolumn = "110"
+vim.go.wildignore='node_modules/**,**/node_modules,.git/**,**/.git,obj/**,**/obj,bin/**,**/bin'
 -- vim.opt.guicursor = "a:block,n:blinkon0,i:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor"
 
 -- [[ Highlight on yank ]]
