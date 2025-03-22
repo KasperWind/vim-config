@@ -26,7 +26,6 @@ local ensure_setup = {
     "jsonls",
     "gopls",
     "ols"
-
 }
 return {
     "neovim/nvim-lspconfig",
