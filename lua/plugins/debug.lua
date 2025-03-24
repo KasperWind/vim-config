@@ -1,3 +1,39 @@
+local conditional_breakpoint = function()
+    local condition = vim.fn.input('Enter breakpoint condition: ')
+    require('dap').set_breakpoint(condition)
+end
+local find_dll_file = function()
+    local builtin = require('telescope.builtin')
+    local actions = require("telescope.actions")
+    local action_state = require("telescope.actions.state")
+
+    local co = coroutine.running()
+    if not co then
+        error("Must be run in a coroutine")
+    end
+
+    local selected_file = nil
+
+    builtin.find_files({
+        prompt_title = 'Path to dll to debug',
+        find_command = { "fd", "--no-ignore", "--extension", "dll", "--hidden" },
+        cwd = vim.fn.getcwd() .. '/bin/',
+        attach_mappings = function(promt_bufnr, map)
+            actions.select_default:replace(function()
+                actions.close(promt_bufnr)
+                local selection = action_state.get_selected_entry()
+                if selection then
+                    selected_file = selection.path
+                end
+                coroutine.resume(co)
+            end)
+            return true
+        end
+    })
+
+    coroutine.yield()
+    return selected_file
+end
 return {
     {
         'mfussenegger/nvim-dap',
@@ -16,7 +52,14 @@ return {
                     name = "launch - netcoredbg",
                     request = "launch",
                     program = function()
-                        return vim.fn.input('Path to dll:', vim.fn.getcwd() .. '/bin/Debug/', 'file')
+                        -- local file = coroutine.wrap(find_dll_file)()
+                        local file = find_dll_file()
+                        if file then
+                            return vim.fn.input(file, 'file')
+                        else
+                            print("nothing found")
+                            return vim.fn.input('Path to dll: ', vim.fn.getcwd() .. '/bin/Debug/', 'file')
+                        end
                     end,
                 },
             }
@@ -32,7 +75,15 @@ return {
             dap.listeners.before.event_exited.dapui_config = function()
                 dapui.close()
             end
-        end
+        end,
+        keys = {
+            { "<leader>db", "<cmd>DapToggleBreakpoint<cr>", desc = "Debug: Set breakpoint" },
+            { "<leader>dB", conditional_breakpoint,         desc = "Debug: Set conditional breakpoint" },
+            { "<leader>dc", "<cmd>DapContinue<cr>",         desc = "Debug: Run/continue" },
+            { "ds",         "<cmd>DapStepOver<cr>",         desc = "Debug: Step over" },
+            { "<leader>ds", "<cmd>DapStepInto<cr>",         desc = "Debug: Step into" },
+            { "<leader>do", "<cmd>DapStepOut<cr>",          desc = "Debug: Step out" },
+        },
     },
     {
         "rcarriga/nvim-dap-ui",
@@ -54,7 +105,7 @@ return {
                         size = 0.25
                     } },
                     position = "left",
-                    size = 70
+                    size = 80
                 }, {
                     elements = { {
                         id = "repl",
