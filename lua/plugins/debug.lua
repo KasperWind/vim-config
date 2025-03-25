@@ -43,6 +43,12 @@ return {
             local dap = require('dap')
             local dapui = require('dapui')
 
+            vim.fn.sign_define('DapBreakpoint', {text='', texthl='DiagnosticSignError', linehl='', numhl=''})
+            vim.fn.sign_define('DapBreakpointCondition', {text='', texthl='DiagnosticSignError', linehl='', numhl=''})
+            vim.fn.sign_define('DapLogPoint', {text='', texthl='DiagnosticSignError', linehl='', numhl=''})
+            vim.fn.sign_define('DapStopped', {text='', texthl='DiagnosticSignHint', linehl='', numhl=''})
+            vim.fn.sign_define('DapBreakpointRejected', {text='', texthl='DiagnosticSignError', linehl='', numhl=''})
+
             dap.adapters.coreclr = {
                 type = 'executable',
                 command = 'C:\\Users\\extkawi\\Downloads\\netcoredbg-win64\\netcoredbg\\netcoredbg.exe',
