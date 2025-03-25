@@ -2,7 +2,8 @@ local conditional_breakpoint = function()
     local condition = vim.fn.input('Enter breakpoint condition: ')
     require('dap').set_breakpoint(condition)
 end
-local find_dll_file = function()
+
+local find_file = function(header, cwd, extension)
     local builtin = require('telescope.builtin')
     local actions = require("telescope.actions")
     local action_state = require("telescope.actions.state")
@@ -15,15 +16,16 @@ local find_dll_file = function()
     local selected_file = nil
 
     builtin.find_files({
-        prompt_title = 'Path to dll to debug',
-        find_command = { "fd", "--no-ignore", "--extension", "dll", "--hidden" },
-        cwd = vim.fn.getcwd() .. '/bin/',
-        attach_mappings = function(promt_bufnr, map)
+        prompt_title = header,
+        find_command = { "fd", "--no-ignore", "--hidden", "--strip-cwd-prefix", "--extension", extension },
+        cwd = cwd,
+
+        attach_mappings = function(promt_bufnr, _)
             actions.select_default:replace(function()
                 actions.close(promt_bufnr)
                 local selection = action_state.get_selected_entry()
                 if selection then
-                    selected_file = selection.path
+                    selected_file = selection.path:gsub("//+", "/"):gsub("\\\\+", "\\")
                 end
                 coroutine.resume(co)
             end)
@@ -52,14 +54,7 @@ return {
                     name = "launch - netcoredbg",
                     request = "launch",
                     program = function()
-                        -- local file = coroutine.wrap(find_dll_file)()
-                        local file = find_dll_file()
-                        if file then
-                            return vim.fn.input(file, 'file')
-                        else
-                            print("nothing found")
-                            return vim.fn.input('Path to dll: ', vim.fn.getcwd() .. '/bin/Debug/', 'file')
-                        end
+                        return find_file('Path to dll to debug', vim.fn.getcwd() .. '/bin/', 'dll')
                     end,
                 },
             }
