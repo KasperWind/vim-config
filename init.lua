@@ -15,6 +15,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 vim.cmd.colorscheme("sorbet")
+vim.g.have_nerd_font = true
 
 require("lazy").setup("plugins")
 
