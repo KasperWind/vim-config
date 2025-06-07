@@ -50,7 +50,8 @@ return
             end
             servers = vim.tbl_extend('force', servers, opts)
         end
-        print(vim.inspect(servers))
+
+        -- print(vim.inspect(servers))
 
         local ensure_installed = vim.tbl_keys(servers or {})
         vim.list_extend(ensure_installed, {
