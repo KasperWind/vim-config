@@ -60,8 +60,43 @@ return {
                     name = "launch - netcoredbg",
                     request = "launch",
                     program = function()
-                        return find_file('Path to dll to debug', vim.fn.getcwd() .. '/bin/', 'dll')
+                        return find_file('Path to dll to debug', vim.fn.getcwd() .. '/bin/', 'exe')
                     end,
+                },
+            }
+            dap.configurations.c = {
+                {
+                    name = "Launch",
+                    type = "gdb",
+                    request = "launch",
+                    program = function()
+                        return find_file('Path to executable to debug', vim.fn.getcwd() .. '/bin/', 'dll')
+                    end,
+                    cwd = "${workspaceFolder}",
+                    stopAtBeginningOfMainSubprogram = false,
+                },
+                {
+                    name = "Select and attach to process",
+                    type = "gdb",
+                    request = "attach",
+                    program = function()
+                        return find_file('Path to executable to debug', vim.fn.getcwd() .. '/bin/', 'exe')
+                    end,
+                    pid = function()
+                        local name = vim.fn.input('Executable name (filter): ')
+                        return require("dap.utils").pick_process({ filter = name })
+                    end,
+                    cwd = '${workspaceFolder}'
+                },
+                {
+                    name = 'Attach to gdbserver :1234',
+                    type = 'gdb',
+                    request = 'attach',
+                    target = 'localhost:1234',
+                    program = function()
+                        return find_file('Path to executable to debug', vim.fn.getcwd() .. '/bin/', 'exe')
+                    end,
+                    cwd = '${workspaceFolder}'
                 },
             }
             dap.listeners.before.attach.dapui_config = function()

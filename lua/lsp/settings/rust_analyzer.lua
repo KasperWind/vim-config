@@ -41,6 +41,11 @@ m.settings = {
             },
             procMacro = {
                 enable = true,
+                ignored = {
+                    leptos_macro = {
+                        "server",
+                    },
+                },
             },
         },
     },
