@@ -122,9 +122,7 @@ require('blink.cmp').setup({
 })
 
 -- neogit
-wk.add({
-    { "<leader>g", group = "Git integrated functions" },
-})
+wk.add({ { "<leader>g", group = "Git integrated functions" }, })
 
 local neogit = require('neogit')
 vim.keymap.set("n", "<leader>gs", neogit.open, { desc = "Git status view" })
@@ -168,5 +166,6 @@ local open_split = function()
     oil.open(pwd)
     vim.api.nvim_set_current_win(start)
 end
+wk.add({ { "<leader>n", group = "File manager" }, })
 vim.keymap.set("n", "<leader>ns", open_split, { desc = "Oil open split" })
 vim.keymap.set("v", "<leader>ns", open_split, { desc = "Oil open split" })
