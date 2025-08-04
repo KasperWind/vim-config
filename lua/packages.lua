@@ -2,6 +2,13 @@
 -- Buildin package manager
 -- ============================================================================
 
+-- TODO:
+-- [ ] status line (lualine)
+-- [ ] omnisharp
+-- [ ] trouble
+-- [ ] debug
+-- [ ] colors
+
 local function build_blink(path)
     vim.notify('Building blink.cmp', vim.log.levels.INFO)
     local obj = vim.system({ 'cargo', 'build', '--release' }, { cwd = path }):wait()
