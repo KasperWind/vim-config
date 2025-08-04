@@ -34,12 +34,13 @@ vim.pack.add({
     { src = 'https://github.com/folke/which-key.nvim.git' },
     { src = 'https://github.com/folke/todo-comments.nvim.git' },
     { src = 'https://github.com/Saghen/blink.cmp.git' },
-    { src = 'https://github.com/xzbdmw/colorful-menu.nvim.git'},
-    { src = 'https://github.com/lewis6991/gitsigns.nvim.git'},
-    { src = 'https://github.com/sindrets/diffview.nvim.git'},
-    { src = 'https://github.com/nvim-lua/plenary.nvim.git'},
+    { src = 'https://github.com/xzbdmw/colorful-menu.nvim.git' },
+    { src = 'https://github.com/lewis6991/gitsigns.nvim.git' },
+    { src = 'https://github.com/sindrets/diffview.nvim.git' },
+    { src = 'https://github.com/nvim-lua/plenary.nvim.git' },
     { src = 'https://github.com/NeogitOrg/neogit.git' },
-    { src = 'https://github.com/ThePrimeagen/harpoon.git', version = 'harpoon2' },
+    { src = 'https://github.com/ThePrimeagen/harpoon.git',            version = 'harpoon2' },
+    { src = 'https://github.com/stevearc/oil.nvim.git' }
 });
 
 -- Treesitter
@@ -90,6 +91,7 @@ vim.keymap.set("n", "<leader>sr", function() fzf_lua.git_files({ resume = false 
     { desc = "Search for file in repository" })
 vim.keymap.set("n", "<leader>sg", function() fzf_lua.live_grep() end, { desc = "Live grep workspace" })
 vim.keymap.set("n", "<leader>sb", function() fzf_lua.grep_curbuf() end, { desc = "Grep current buffer" })
+vim.keymap.set("n", "<leader>sm", function() fzf_lua.manpages() end, { desc = "Search man pages" })
 
 -- blink
 require('blink.cmp').setup({
@@ -137,10 +139,34 @@ local harpoon = require("harpoon")
 harpoon:setup()
 
 vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end, { desc = "Harpoon add current buffer" })
-vim.keymap.set("n", "<leader>h", function () harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = "Harpoon add current buffer" })
-vim.keymap.set("n", "<A-h>",  function() harpoon:list():select(1) end, { desc = "Opens file 1 in harpoon list" })
-vim.keymap.set("n", "<A-j>",  function() harpoon:list():select(2) end, { desc = "Opens file 1 in harpoon list" })
-vim.keymap.set("n", "<A-k>",  function() harpoon:list():select(3) end, { desc = "Opens file 1 in harpoon list" })
-vim.keymap.set("n", "<A-l>",  function() harpoon:list():select(4) end, { desc = "Opens file 1 in harpoon list" })
-vim.keymap.set("n", "<A-p>",  function() harpoon:list():prev() end, { desc = "Harpoon previuos" })
-vim.keymap.set("n", "<A-n>",  function() harpoon:list():next() end, { desc = "Harpoon next" })
+vim.keymap.set("n", "<leader>h", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end,
+    { desc = "Harpoon add current buffer" })
+vim.keymap.set("n", "<A-h>", function() harpoon:list():select(1) end, { desc = "Opens file 1 in harpoon list" })
+vim.keymap.set("n", "<A-j>", function() harpoon:list():select(2) end, { desc = "Opens file 1 in harpoon list" })
+vim.keymap.set("n", "<A-k>", function() harpoon:list():select(3) end, { desc = "Opens file 1 in harpoon list" })
+vim.keymap.set("n", "<A-l>", function() harpoon:list():select(4) end, { desc = "Opens file 1 in harpoon list" })
+vim.keymap.set("n", "<A-p>", function() harpoon:list():prev() end, { desc = "Harpoon previuos" })
+vim.keymap.set("n", "<A-n>", function() harpoon:list():next() end, { desc = "Harpoon next" })
+
+-- oil
+require('oil').setup({
+    keymaps = {
+        ["<C-l>"] = false,
+        ["<C-h>"] = false,
+        ["<C-r>"] = "actions.refresh",
+    }
+})
+local oil = require('oil')
+local open_split = function()
+    oil.open()
+    local start = vim.api.nvim_get_current_win()
+    vim.cmd('vsplit')
+    local win = vim.api.nvim_get_current_win()
+    local buf = vim.api.nvim_create_buf(true, true)
+    vim.api.nvim_win_set_buf(win, buf)
+    local pwd = vim.fn.getcwd()
+    oil.open(pwd)
+    vim.api.nvim_set_current_win(start)
+end
+vim.keymap.set("n", "<leader>ns", open_split, { desc = "Oil open split" })
+vim.keymap.set("v", "<leader>ns", open_split, { desc = "Oil open split" })
