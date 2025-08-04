@@ -87,3 +87,15 @@ vim.opt.diffopt:append("linematch:60")
 -- Performance improvements
 -- vim.opt.redrawtime = 10000
 -- vim.opt.maxmempattern = 20000
+--
+-- Filetype mapping
+vim.filetype.add({
+    extension = {
+        xaml = 'xml',
+        TcIO = 'jsx',
+        TcDUT = 'jsx',
+        TcPOU = 'jsx',
+        gohtml = 'html',
+        html = 'html',
+    }
+})

@@ -25,14 +25,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
             return { buffer = event.buf, desc = desc }
         end
         local client = vim.lsp.get_client_by_id(event.data.client_id)
-        if client then
-            if client:supports_method({ 'textDocumet/completion' }) then
-                vim.lsp.completion.enable(true, client.id, event.buf, {
-                    autotrigger = false,
-                })
-                vim.keymap.set("i", "<C-space>", vim.lsp.completion.get, { desc = "LSP: Trigger completion" })
-            end
-        end
 
         -- Navigation
         vim.keymap.set('n', 'gD', vim.lsp.buf.definition, opts('LSP: Go to definition'))
@@ -55,6 +47,21 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', '<leader>ld', vim.diagnostic.open_float, opts('LSP: Show diagnostic'))
         vim.keymap.set('n', '<leader>lq', vim.diagnostic.setloclist, opts('LSP: Buffer diagnostic to location list'))
         vim.keymap.set('n', '<leader>sd', fzf_lua.lsp_document_diagnostics, opts('LSP: Search document diagnostic'))
+
+        if client ~= nil and client.name == 'rust_analyzer' then
+            vim.keymap.set("n", "<leader>bb", "<cmd>make build<CR>", opts("Cargo build"))
+            vim.keymap.set("n", "<leader>br", "<cmd>make run<CR>", opts("Cargo run"))
+            vim.keymap.set("n", "<leader>bt", "<cmd>make test<CR>", opts("Cargo test"))
+
+            local path = client.workspace_folders[1].name .. "/.cargo/config.toml"
+            local filereadable = vim.fn.filereadable(path)
+            if filereadable == 1 then
+                local _ = vim.fn.readfile(path)
+                client.config.settings["rust-analyzer"].cargo.target = "armv7a-none-eabi"
+                client.config.settings["rust-analyzer"].check.allTargets = false
+                client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
+            end
+        end
     end,
 })
 
@@ -88,3 +95,38 @@ vim.api.nvim_create_user_command('LspInfo', function()
         end
     end
 end, { desc = 'Show LSP client info' })
+
+-- ============================================================================
+-- LSP server settings
+-- ============================================================================
+
+vim.lsp.config('rust_analyzer', {
+    settings = {
+        ['rust-analyzer'] = {
+            imports = {
+                granularity = {
+                    group = "module",
+                },
+                prefix = "self",
+            },
+            cargo = {
+                -- target = "thumbv7em-none-eabihf",
+                -- target = "armv7a-none-eabi",
+                buildScripts = {
+                    enable = true,
+                },
+            },
+            check = {
+                -- allTargets = false,
+            },
+            procMacro = {
+                enable = true,
+                ignored = {
+                    leptos_macro = {
+                        "server",
+                    },
+                },
+            },
+        },
+    }
+})
