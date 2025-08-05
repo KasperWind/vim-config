@@ -18,7 +18,7 @@ local colors = {
     violet   = col.neutral_purple,
     magenta  = col.neutral_purple,
     blue     = col.bright_blue,
-    red      = col.dark_red_soft,
+    red      = col.bright_red,
 }
 
 local conditions = {

@@ -2,6 +2,7 @@
 -- USEFUL FUNCTIONS
 -- ============================================================================
 
+local m = {}
 
 local wk = require('which-key')
 
@@ -55,10 +56,100 @@ local show_messages_in_buffer = function()
     -- Put the messages in the buffer
     vim.api.nvim_buf_set_lines(buf, 0, -1, false, vim.split(messages, '\n'))
 end
-vim.keymap.set("n", "<leader>pm", show_messages_in_buffer, { desc = 'Open a new buffer in the current window with the messages' })
+vim.keymap.set("n", "<leader>pm", show_messages_in_buffer,
+    { desc = 'Open a new buffer in the current window with the messages' })
 
 -- Create undo directory if it doesn't exist
 local undodir = vim.fn.expand("~/.vim/undodir")
 if vim.fn.isdirectory(undodir) == 0 then
     vim.fn.mkdir(undodir, "p")
 end
+
+local function append_slash(path)
+    if string.char(string.len(path)) == '/' then
+        return path
+    else
+        return path .. '/'
+    end
+end
+
+--- Prompts the user to select a file using fzf-lua and passes the result to a callback.
+---
+--- This function opens the fzf-lua file picker (`require('fzf-lua').files`) and calls
+--- the given `callback` function with the selected file path as a string.
+---
+--- ## Usage
+--- ```lua
+--- local path = vim.fn.expand('%:p:h') .. '/test'
+--- find_fzf_file(path, 'dll to search for', 'dll', function (file)
+---     print('callback called')
+---     print(file)
+--- end)
+--- ```
+---
+--- @param cwd string The directory to base the search from.string.sub(selected[1], loc)
+--- @param prompt string The prompt showed for the search
+--- @param extension string? Extension to search for or nil
+--- @param callback fun(filepath: string) Callback function that receives the selected file path.
+---        The filepath is a string representing the selected file. If the user cancels,
+---        the callback may not be called.
+local function find_fzf_file(cwd, prompt, extension, callback)
+    local ext = ""
+    if extension and extension ~= "" then
+        ext = "--type f --extension " .. extension
+    end
+    require('fzf-lua').files({
+        promtp = prompt .. '> ',
+        cwd = cwd,
+        file_icons = false,
+        git_icons = false,
+        fd_opts = ext,
+        actions = {
+            ['default'] = function(selected)
+                if selected and selected[1] then
+                    callback(append_slash(cwd) .. selected[1])
+                end
+            end
+        },
+    })
+end
+
+--- Prompts the user to select a file using fzf-lua and passes the result back.
+--- @param cwd string The directory to base the search from.string.sub(selected[1], loc)
+--- @param prompt string The prompt showed for the search
+--- @param extension string? Extension to search for or nil
+--- @return string? The absolute path and file name
+local function find_file(cwd, prompt, extension)
+    local co = coroutine.running()
+    if not co then
+        error("Must be run in a coroutine")
+    end
+
+    local ext = ""
+    if extension and extension ~= "" then
+        ext = "--type f --extension " .. extension
+    end
+    require('fzf-lua').files({
+        promtp = prompt .. '> ',
+        cwd = cwd,
+        file_icons = false,
+        git_icons = false,
+        fd_opts = ext,
+        actions = {
+            ['default'] = function(selected)
+                if selected and selected[1] then
+                    coroutine.resume(co, append_slash(cwd) .. selected[1])
+                else
+                    coroutine.resume(co, nil)
+                end
+            end
+        },
+    })
+
+    return coroutine.yield()
+end
+
+m.find_fzf_file = find_fzf_file
+m.find_file = find_file
+
+return m

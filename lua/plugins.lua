@@ -13,6 +13,8 @@ local ensure_installed = {
     'css',
     'markdown',
     'hyprlang',
+    'c_sharp',
+    'fsharp',
 }
 
 local patterns = {
@@ -25,6 +27,8 @@ local patterns = {
     'md',
     'conf',
     'css',
+    'cs',
+    'fs',
 }
 
 local treesitter = require('nvim-treesitter')
@@ -138,3 +142,4 @@ vim.cmd.colorscheme('gruvbox')
 
 -- Status line, lua line
 require('lualine_setup')
+
