@@ -6,5 +6,12 @@ require('packages')
 require('options')
 require('keymaps')
 require('functions')
-require('status_line')
+require('plugins')
 require('lsp')
+
+-- TODO:
+-- [X] colors
+-- [ ] status line (lualine)
+-- [ ] trouble
+-- [ ] debug
+-- [ ] omnisharp
