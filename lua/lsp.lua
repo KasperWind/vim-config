@@ -15,6 +15,7 @@ end
 local wk = require('which-key')
 wk.add({
     { "<leader>l", group = "LSP functions" },
+    { "<leader>b", group = "Build, debug and run" },
 })
 
 -- LSP keymaps
@@ -48,18 +49,30 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', '<leader>lq', vim.diagnostic.setloclist, opts('LSP: Buffer diagnostic to location list'))
         vim.keymap.set('n', '<leader>sd', fzf_lua.lsp_document_diagnostics, opts('LSP: Search document diagnostic'))
 
-        if client ~= nil and client.name == 'rust_analyzer' then
-            vim.keymap.set("n", "<leader>bb", "<cmd>make build<CR>", opts("Cargo build"))
-            vim.keymap.set("n", "<leader>br", "<cmd>make run<CR>", opts("Cargo run"))
-            vim.keymap.set("n", "<leader>bt", "<cmd>make test<CR>", opts("Cargo test"))
+        if client ~= nil then
+            if client.name == 'rust_analyzer' then
+                vim.keymap.set("n", "<leader>bb", "<cmd>make build<CR>", opts("Cargo build"))
+                vim.keymap.set("n", "<leader>br", "<cmd>make run<CR>", opts("Cargo run"))
+                vim.keymap.set("n", "<leader>bt", "<cmd>make test<CR>", opts("Cargo test"))
 
-            local path = client.workspace_folders[1].name .. "/.cargo/config.toml"
-            local filereadable = vim.fn.filereadable(path)
-            if filereadable == 1 then
-                local _ = vim.fn.readfile(path)
-                client.config.settings["rust-analyzer"].cargo.target = "armv7a-none-eabi"
-                client.config.settings["rust-analyzer"].check.allTargets = false
-                client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
+                local path = client.workspace_folders[1].name .. "/.cargo/config.toml"
+                local filereadable = vim.fn.filereadable(path)
+                if filereadable == 1 then
+                    local _ = vim.fn.readfile(path)
+                    client.config.settings["rust-analyzer"].cargo.target = "armv7a-none-eabi"
+                    client.config.settings["rust-analyzer"].check.allTargets = false
+                    client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
+                end
+            elseif client.name == 'omnisharp' then
+                vim.keymap.set("n", "<leader>bb", "<cmd>make<CR>", opts("Dotnet build"))
+                vim.keymap.set("n", "<leader>br", "<cmd>!dotnet run<CR>", opts("Dotnet run"))
+
+                local omni = require('omnisharp_extended')
+
+                vim.keymap.set("n", "gd", omni.lsp_definition, opts("LSP: go to definition"))
+                vim.keymap.set("n", "gD", omni.lsp_type_definition, opts("LSP: go to declaration"))
+                vim.keymap.set("n", "gr", omni.lsp_references, opts("LSP: show references"))
+                vim.keymap.set("n", "gi", omni.lsp_implementation, opts("LSP: go to implementation"))
             end
         end
     end,
@@ -100,6 +113,7 @@ end, { desc = 'Show LSP client info' })
 -- LSP server settings
 -- ============================================================================
 
+-- rust rust_analyzer
 vim.lsp.config('rust_analyzer', {
     settings = {
         ['rust-analyzer'] = {
@@ -129,4 +143,54 @@ vim.lsp.config('rust_analyzer', {
             },
         },
     }
+})
+
+-- omnisharp
+vim.lsp.config('omnisharp', {
+    cmd = { vim.fn.executable('OmniSharp') == 1 and 'OmniSharp' or 'omnisharp' },
+    settings = {
+        FormattingOptions = {
+            -- Enables support for reading code style, naming convention and analyzer
+            -- settings from .editorconfig.
+            EnableEditorConfigSupport = true,
+            -- Specifies whether 'using' directives should be grouped and sorted during
+            -- document formatting.
+            OrganizeImports = nil,
+        },
+        MsBuild = {
+            -- If true, MSBuild project system will only load projects for files that
+            -- were opened in the editor. This setting is useful for big C# codebases
+            -- and allows for faster initialization of code navigation features only
+            -- for projects that are relevant to code that is being edited. With this
+            -- setting enabled OmniSharp may load fewer projects and may thus display
+            -- incomplete reference lists for symbols.
+            LoadProjectsOnDemand = nil,
+        },
+        RoslynExtensionsOptions = {
+            -- Enables support for roslyn analyzers, code fixes and rulesets.
+            EnableAnalyzersSupport = nil,
+            -- Enables support for showing unimported types and unimported extension
+            -- methods in completion lists. When committed, the appropriate using
+            -- directive will be added at the top of the current file. This option can
+            -- have a negative impact on initial completion responsiveness,
+            -- particularly for the first few completion sessions after opening a
+            -- solution.
+            EnableImportCompletion = nil,
+            -- Only run analyzers against open files when 'enableRoslynAnalyzers' is
+            -- true
+            AnalyzeOpenDocumentsOnly = nil,
+            -- Enables the possibility to see the code in external nuget dependencies
+            EnableDecompilationSupport = nil,
+        },
+        RenameOptions = {
+            RenameInComments = nil,
+            RenameOverloads = nil,
+            RenameInStrings = nil,
+        },
+        Sdk = {
+            -- Specifies whether to include preview versions of the .NET SDK when
+            -- determining which version to use for project loading.
+            IncludePrereleases = true,
+        },
+    },
 })

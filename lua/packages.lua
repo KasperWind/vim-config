@@ -43,5 +43,6 @@ vim.pack.add({
     { src = 'https://github.com/stevearc/oil.nvim.git' },
     { src = 'https://github.com/ellisonleao/gruvbox.nvim.git' },
     { src = 'https://github.com/nvim-lualine/lualine.nvim.git' },
+    { src = 'https://github.com/Hoffs/omnisharp-extended-lsp.nvim.git' },
 })
 
