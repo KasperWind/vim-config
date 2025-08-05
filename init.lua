@@ -11,7 +11,7 @@ require('lsp')
 
 -- TODO:
 -- [X] colors
--- [ ] status line (lualine)
--- [ ] trouble
--- [ ] debug
+-- [X] status line (lualine)
+-- [ ] trouble, wait with that one
 -- [ ] omnisharp
+-- [ ] debug
