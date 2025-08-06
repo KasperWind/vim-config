@@ -50,6 +50,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
             elseif client.name == 'omnisharp' then
                 vim.keymap.set("n", "<leader>bb", "<cmd>make<CR>", opts("Dotnet build"))
                 vim.keymap.set("n", "<leader>br", "<cmd>!dotnet run<CR>", opts("Dotnet run"))
+                vim.cmd.compiler('dotnet')
 
                 local omni = require('omnisharp_extended')
 
@@ -57,6 +58,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
                 vim.keymap.set("n", "gD", omni.lsp_type_definition, opts("LSP: go to declaration"))
                 vim.keymap.set("n", "gr", omni.lsp_references, opts("LSP: show references"))
                 vim.keymap.set("n", "gi", omni.lsp_implementation, opts("LSP: go to implementation"))
+            elseif client.name == 'fsautocomplete' then
+                vim.keymap.set("n", "<leader>bb", "<cmd>make<CR>", opts("Dotnet build"))
+                vim.keymap.set("n", "<leader>br", "<cmd>!dotnet run<CR>", opts("Dotnet run"))
+                vim.cmd.compiler('dotnet')
             end
         end
     end,
