@@ -15,9 +15,17 @@ local ensure_installed = {
     'hyprlang',
     'c_sharp',
     'fsharp',
+    'c',
+    'fish',
+    'javascript',
+    'jsdoc',
+    'jsx',
+    'typescript',
+    'tsx',
 }
 
 local patterns = {
+    'lua',
     'rs',
     'yuck',
     'zig',
@@ -28,19 +36,22 @@ local patterns = {
     'conf',
     'css',
     'cs',
-    'fs',
 }
+
+patterns = vim.list_extend(patterns, ensure_installed)
+
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = patterns,
+    callback = function()
+        vim.treesitter.start()
+    end,
+})
 
 local treesitter = require('nvim-treesitter')
 treesitter.setup({
     install_dir = vim.fn.stdpath('data') .. '/site',
 })
 treesitter.install(ensure_installed)
-
-vim.api.nvim_create_autocmd('FileType', {
-    pattern = patterns,
-    callback = function() vim.treesitter.start() end,
-})
 
 -- fzf lua
 local wk = require('which-key')
@@ -142,4 +153,3 @@ vim.cmd.colorscheme('gruvbox')
 
 -- Status line, lua line
 require('lualine_setup')
-

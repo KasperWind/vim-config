@@ -7,6 +7,7 @@ local servers = {
     'rust_analyzer',
     'clangd',
     'omnisharp',
+    'fsautocomplete',
 }
 
 for _, server in pairs(servers) do

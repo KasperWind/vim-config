@@ -4,6 +4,7 @@
 
 -- theme & transparency
 vim.cmd.colorscheme("habamax")
+vim.cmd.filetype('on')
 
 -- Basic settings
 vim.opt.number = true         -- Line numbers
