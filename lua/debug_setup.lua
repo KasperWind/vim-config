@@ -75,7 +75,7 @@ vim.keymap.set('n', "<leader>bq", dapui.close, { desc = "Debug: Terminate" })
 -- CSharp
 dap.adapters.coreclr = {
     type = 'executable',
-    command = '/home/kasperw/.local/bin/netcoredbg/netcoredbg',
+    command = vim.fn.exepath('netcoredbg'),
     args = { '--interpreter=vscode' }
 }
 
