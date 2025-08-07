@@ -82,50 +82,16 @@ dap.adapters.coreclr = {
     args = { '--interpreter=vscode' }
 }
 
--- For dotnet netcoredbg to run in vscode mode, a folder called
--- `.vscode` should be in the cwd and it should contain a setup json called `launch.json`
--- that should be formatted as this
---
--- TODO: create a function that could create the file, using fzf-lua to find the program
---              and the find the debugger, maybe using `vim.fn.exepath('netcoredbg')
---
--- ```json
--- {
---     "version": "0.2.0",
---     "configurations": [
---         {
---             "name": "netcoredbg",
---             "type": "coreclr",
---             "request": "launch",
---             "preLaunchTask": "build",
---             "program": "${workspaceFolder}\\path\\to\\bin-or-dell\\bin-or-dell.dll",
---             "args": [],
---             "cwd": "${workspaceFolder}",
---             "pipeTransport": {
---                 "pipeCwd": "${workspaceFolder}",
---                 "pipeProgram": "powershell",
---                 "pipeArgs": ["-Command"],
---                 "debuggerPath": "\\path\\to\\netcoredbg\\netcoredbg.exe",
---                 "debuggerArgs": ["--interpreter=vscode"],
---                 "quoteArgs": true
---             },
---             "env": {
---                 "DOTNET_ENVIRONMENT": "Development"
---             }
---         }
---     ]
--- }
--- ```
--- dap.configurations.cs = {
---     {
---         type = "coreclr",
---         name = "launch - netcoredbg",
---         request = "launch",
---         program = function()
---             f.find_file(vim.fn.getcwd() .. '/bin/Debug/', 'Path to file to debug', nil)
---         end,
---     },
--- }
+dap.configurations.cs = {
+    {
+        type = "coreclr",
+        name = "launch - netcoredbg",
+        request = "launch",
+        program = function()
+            return f.find_file(vim.fn.getcwd() .. '/bin/Debug/', 'Path to file to debug', nil)
+        end,
+    },
+}
 
 -- gdb
 dap.adapters.gdb = {
