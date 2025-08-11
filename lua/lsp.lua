@@ -12,6 +12,8 @@ local servers = {
     'jsonls',
     'html',
     'cssls',
+    'zls',
+    'lemminx',
 }
 
 for _, server in pairs(servers) do
