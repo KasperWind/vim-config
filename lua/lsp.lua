@@ -8,6 +8,7 @@ local servers = {
     'clangd',
     'omnisharp',
     'fsautocomplete',
+    'ts_ls',
 }
 
 for _, server in pairs(servers) do

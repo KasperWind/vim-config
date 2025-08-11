@@ -149,7 +149,21 @@ local function find_file(cwd, prompt, extension)
     return coroutine.yield()
 end
 
+local function client_supports_method(client_, method, buf_nr)
+    if vim.fn.has 'nvim-0.11' == 1 then
+        return client_:supports_method(method, buf_nr)
+    else
+        return client_.supports_method(method, { bufnr = buf_nr })
+    end
+end
+
+local function toggle_inlay(buf_nr)
+    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = buf_nr })
+end
+
 m.find_fzf_file = find_fzf_file
 m.find_file = find_file
+m.client_supports_method = client_supports_method
+m.toggle_inlay = toggle_inlay
 
 return m

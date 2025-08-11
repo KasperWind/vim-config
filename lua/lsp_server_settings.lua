@@ -4,6 +4,8 @@
 
 -- LSP keymaps
 local fzf_lua = require('fzf-lua')
+local functions = require('functions')
+
 vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(event)
         local opts = function(desc)
@@ -63,6 +65,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
                 vim.keymap.set("n", "<leader>br", "<cmd>!dotnet run<CR>", opts("Dotnet run"))
                 vim.cmd.compiler('dotnet')
             end
+        end
+
+        if client and functions.client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
+            vim.keymap.set('n', '<leader>lh', functions.toggle_inlay, { desc = 'LSP: Toggle Inlay Hints' })
         end
     end,
 })
@@ -157,3 +163,6 @@ vim.lsp.config('omnisharp', {
         },
     },
 })
+
+-- ts_ls
+
