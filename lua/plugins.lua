@@ -9,7 +9,7 @@ local ensure_installed = {
     'zig',
     'ini',
     'bash',
-    'htmldjango',
+    'html',
     'css',
     'markdown',
     'hyprlang',
@@ -59,6 +59,11 @@ wk.add({
     { "<leader>s", group = "FZF lua search" },
 })
 local fzf_lua = require('fzf-lua')
+fzf_lua.setup({
+    files = {
+        cmd = 'rg --files --glob "!*.git" --glob "!AppData" --glob "!.nuget" --glob "!.dotnet" --glob "!node_modules"',
+    },
+})
 vim.keymap.set("n", "<leader>sf", function() fzf_lua.files({ resume = false }) end,
     { desc = "Search for file in workspace" })
 vim.keymap.set("n", "<leader>sr", function() fzf_lua.git_files({ resume = false }) end,

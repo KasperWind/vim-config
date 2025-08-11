@@ -9,6 +9,9 @@ local servers = {
     'omnisharp',
     'fsautocomplete',
     'ts_ls',
+    'jsonls',
+    'html',
+    'cssls',
 }
 
 for _, server in pairs(servers) do
