@@ -88,7 +88,7 @@ dap.configurations.cs = {
         name = "launch - netcoredbg",
         request = "launch",
         program = function()
-            return f.find_file(vim.fn.getcwd() .. '/bin/Debug/', 'Path to file to debug', nil)
+            return f.find_file(vim.fn.getcwd() .. '/bin/Debug/', 'Path to file to debug', 'dll')
         end,
     },
 }
