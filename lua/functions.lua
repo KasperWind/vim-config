@@ -10,11 +10,14 @@ local wk = require('which-key')
 wk.add({
     { "<leader>p", group = "Various" },
 })
-vim.keymap.set("n", "<leader>pa", function()
+
+--- Puts the full path in the clip board and prints it out
+m.copy_full_path = function()
     local path = vim.fn.expand("%:p")
     vim.fn.setreg("+", path)
     print("file:", path)
-end, { desc = 'Copy full file path' })
+end
+vim.keymap.set("n", "<leader>pa", m.copy_full_path, { desc = 'Copy full file path' })
 
 -- Basic autocommands
 local augroup = vim.api.nvim_create_augroup("UserConfig", {})
@@ -40,7 +43,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 })
 
 -- get messages in a new buffer
-local show_messages_in_buffer = function()
+m.show_messages_in_buffer = function()
     -- Get messages using vim.fn.execute
     local messages = vim.fn.execute('messages')
 
@@ -56,7 +59,8 @@ local show_messages_in_buffer = function()
     -- Put the messages in the buffer
     vim.api.nvim_buf_set_lines(buf, 0, -1, false, vim.split(messages, '\n'))
 end
-vim.keymap.set("n", "<leader>pm", show_messages_in_buffer,
+
+vim.keymap.set("n", "<leader>pm", m.show_messages_in_buffer,
     { desc = 'Open a new buffer in the current window with the messages' })
 
 -- Create undo directory if it doesn't exist
