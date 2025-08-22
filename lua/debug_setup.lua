@@ -66,7 +66,7 @@ end
 vim.keymap.set('n', "<leader>bB", "<cmd>DapToggleBreakpoint<cr>", { desc = "Debug: Set breakpoint" })
 vim.keymap.set('n', "<leader>bC", conditional_breakpoint, { desc = "Debug: Set conditional breakpoint" })
 vim.keymap.set('n', "<leader>bc", "<cmd>DapContinue<cr>", { desc = "Debug: Run/continue" })
-vim.keymap.set('n', "bs", "<cmd>DapStepOver<cr>", { desc = "Debug: Step over" })
+vim.keymap.set('n', "<leader>bS", "<cmd>DapStepOver<cr>", { desc = "Debug: Step over" })
 vim.keymap.set('n', "<leader>bs", "<cmd>DapStepInto<cr>", { desc = "Debug: Step into" })
 vim.keymap.set('n', "<leader>bo", "<cmd>DapStepOut<cr>", { desc = "Debug: Step out" })
 vim.keymap.set('n', "<leader>bq", dapui.close, { desc = "Debug: Terminate" })
