@@ -37,9 +37,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
         if client ~= nil then
             if client.name == 'rust_analyzer' then
-                vim.keymap.set("n", "<leader>bb", "<cmd>make build<CR>", opts("Cargo build"))
-                vim.keymap.set("n", "<leader>br", "<cmd>make run<CR>", opts("Cargo run"))
-                vim.keymap.set("n", "<leader>bt", "<cmd>make test<CR>", opts("Cargo test"))
+                require('rust')
+                vim.keymap.set("n", "<leader>bb", "<cmd>CargoBuild<CR>", opts("Cargo build"))
+                vim.keymap.set("n", "<leader>br", "<cmd>CargoRun<CR>", opts("Cargo run"))
+                vim.keymap.set("n", "<leader>bt", "<cmd>CargoTest<CR>", opts("Cargo test"))
 
                 local path = client.workspace_folders[1].name .. "/.cargo/config.toml"
                 local filereadable = vim.fn.filereadable(path)
