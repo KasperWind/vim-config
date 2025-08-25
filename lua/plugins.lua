@@ -72,6 +72,8 @@ vim.keymap.set("n", "<leader>sg", function() fzf_lua.live_grep() end, { desc = "
 vim.keymap.set("n", "<leader>sb", function() fzf_lua.grep_curbuf() end, { desc = "Grep current buffer" })
 vim.keymap.set("n", "<leader>sm", function() fzf_lua.manpages() end, { desc = "Search man pages" })
 
+fzf_lua.register_ui_select()
+
 -- blink
 require('blink.cmp').setup({
     sources = {
