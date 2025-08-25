@@ -71,6 +71,7 @@ vim.keymap.set("n", "<leader>sr", function() fzf_lua.git_files({ resume = false 
 vim.keymap.set("n", "<leader>sg", function() fzf_lua.live_grep() end, { desc = "Live grep workspace" })
 vim.keymap.set("n", "<leader>sb", function() fzf_lua.grep_curbuf() end, { desc = "Grep current buffer" })
 vim.keymap.set("n", "<leader>sm", function() fzf_lua.manpages() end, { desc = "Search man pages" })
+vim.keymap.set("n", "<leader><leader>s", function() fzf_lua.buffers() end, { desc = "Search open buffers" })
 
 fzf_lua.register_ui_select()
 
