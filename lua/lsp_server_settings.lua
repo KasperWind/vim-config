@@ -65,6 +65,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
                 vim.keymap.set("n", "<leader>bb", "<cmd>make<CR>", opts("Dotnet build"))
                 vim.keymap.set("n", "<leader>br", "<cmd>!dotnet run<CR>", opts("Dotnet run"))
                 vim.cmd.compiler('dotnet')
+            elseif client.name == 'ts_ls' then
+                vim.keymap.set("n", "<leader>br", "<cmd>term bun %<CR>", opts("Bun run, current file"))
             end
         end
 
