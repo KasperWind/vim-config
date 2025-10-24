@@ -33,6 +33,7 @@ vim.diagnostic.config({
     underline = true,
     update_in_insert = false,
     severity_sort = true,
+    float = { border = 'rounded' },
 })
 
 vim.diagnostic.config({
@@ -56,4 +57,3 @@ vim.api.nvim_create_user_command('LspInfo', function()
         end
     end
 end, { desc = 'Show LSP client info' })
-

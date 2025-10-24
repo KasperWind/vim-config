@@ -22,7 +22,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', '<leader>ss', fzf_lua.lsp_document_symbols, opts('LSP: Search Document Symbols'))
 
         -- Information
-        vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts('LSP: Buffer Hover'))
+        vim.keymap.set('n', 'K', function() vim.lsp.buf.hover({ border = 'rounded' }) end, opts('LSP: Buffer Hover'))
         vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts('LSP: Signature help'))
 
         -- Code actions
