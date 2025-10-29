@@ -188,6 +188,11 @@ vim.keymap.set("v", "<leader>ns", open_split, { desc = "Oil open split" })
 vim.keymap.set("n", "<leader>nn", oil.open, { desc = "Oil open" })
 vim.keymap.set("v", "<leader>nn", oil.open, { desc = "Oil open" })
 
+-- nvim-tree
+require('nvim-tree').setup()
+vim.keymap.set("n", "<leader>nN", ":NvimTreeToggle<cr>", { desc = "Nvim-tree toggle" })
+vim.keymap.set("v", "<leader>nN", ":NvimTreeToggle<cr>", { desc = "Nvim-tree toggle" })
+
 -- Color scheme, Gruvbox
 require('gruvbox').setup({})
 vim.o.background = 'dark'

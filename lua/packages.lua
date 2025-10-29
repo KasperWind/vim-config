@@ -33,7 +33,7 @@ vim.pack.add({
     { src = 'https://github.com/j-hui/fidget.nvim.git' },
     { src = 'https://github.com/folke/which-key.nvim.git' },
     { src = 'https://github.com/folke/todo-comments.nvim.git' },
-    { src = 'https://github.com/Saghen/blink.cmp.git' },
+    { src = 'https://github.com/Saghen/blink.cmp.git' , version="1.*"},
     { src = 'https://github.com/xzbdmw/colorful-menu.nvim.git' },
     { src = 'https://github.com/lewis6991/gitsigns.nvim.git' },
     { src = 'https://github.com/sindrets/diffview.nvim.git' },
@@ -48,5 +48,6 @@ vim.pack.add({
     { src = 'https://github.com/rcarriga/nvim-dap-ui.git' },
     { src = 'https://github.com/nvim-neotest/nvim-nio.git' },
     { src = 'https://github.com/onsails/lspkind.nvim.git' },
+    { src = 'https://github.com/nvim-tree/nvim-tree.lua.git' }
 })
 
