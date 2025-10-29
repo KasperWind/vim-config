@@ -24,6 +24,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         -- Information
         vim.keymap.set('n', 'K', function() vim.lsp.buf.hover({ border = 'rounded' }) end, opts('LSP: Buffer Hover'))
         vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts('LSP: Signature help'))
+        vim.keymap.set('i', '<C-k>', vim.lsp.buf.signature_help, opts('LSP: Signature help'))
 
         -- Code actions
         vim.keymap.set('n', '<leader>la', fzf_lua.lsp_code_actions, opts('LSP: Code Action'))
@@ -51,16 +52,18 @@ vim.api.nvim_create_autocmd('LspAttach', {
                     client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
                 end
             elseif client.name == 'omnisharp' then
-                vim.keymap.set("n", "<leader>bb", "<cmd>make<CR>", opts("Dotnet build"))
-                vim.keymap.set("n", "<leader>br", "<cmd>!dotnet run<CR>", opts("Dotnet run"))
+                require('omnisharp')
+                vim.keymap.set("n", "<leader>bb", "<cmd>OmniSharpBuild<CR>", opts("Dotnet build"))
+                vim.keymap.set("n", "<leader>br", "<cmd>OmniSharpRun<CR>", opts("Dotnet run"))
+                vim.keymap.set("n", "<leader>bt", "<cmd>OmniSharpTest<CR>", opts("Dotnet run tests"))
                 vim.cmd.compiler('dotnet')
 
-                local omni = require('omnisharp_extended')
-
-                vim.keymap.set("n", "gd", omni.lsp_definition, opts("LSP: go to definition"))
-                vim.keymap.set("n", "gD", omni.lsp_type_definition, opts("LSP: go to declaration"))
-                vim.keymap.set("n", "gr", omni.lsp_references, opts("LSP: show references"))
-                vim.keymap.set("n", "gi", omni.lsp_implementation, opts("LSP: go to implementation"))
+                -- local omni = require('omnisharp_extended')
+                --
+                -- vim.keymap.set("n", "gd", omni.lsp_definition, opts("LSP: go to definition"))
+                -- vim.keymap.set("n", "gD", omni.lsp_type_definition, opts("LSP: go to declaration"))
+                -- vim.keymap.set("n", "gr", omni.lsp_references, opts("LSP: show references"))
+                -- vim.keymap.set("n", "gi", omni.lsp_implementation, opts("LSP: go to implementation"))
             elseif client.name == 'fsautocomplete' then
                 vim.keymap.set("n", "<leader>bb", "<cmd>make<CR>", opts("Dotnet build"))
                 vim.keymap.set("n", "<leader>br", "<cmd>!dotnet run<CR>", opts("Dotnet run"))
@@ -140,7 +143,7 @@ vim.lsp.config('omnisharp', {
         },
         RoslynExtensionsOptions = {
             -- Enables support for roslyn analyzers, code fixes and rulesets.
-            EnableAnalyzersSupport = nil,
+            EnableAnalyzersSupport = true,
             -- Enables support for showing unimported types and unimported extension
             -- methods in completion lists. When committed, the appropriate using
             -- directive will be added at the top of the current file. This option can
@@ -152,7 +155,7 @@ vim.lsp.config('omnisharp', {
             -- true
             AnalyzeOpenDocumentsOnly = nil,
             -- Enables the possibility to see the code in external nuget dependencies
-            EnableDecompilationSupport = nil,
+            EnableDecompilationSupport = true,
         },
         RenameOptions = {
             RenameInComments = nil,
