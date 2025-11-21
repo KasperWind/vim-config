@@ -10,6 +10,6 @@ end, {})
 
 vim.api.nvim_create_user_command('CargoTest', function()
     vim.cmd('enew')
-    vim.cmd('term cargo test')
+    vim.cmd('term cargo test -- --no-capture')
 end, {})
 
