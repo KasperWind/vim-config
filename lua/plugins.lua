@@ -162,6 +162,9 @@ vim.keymap.set("n", "<A-l>", function() harpoon:list():select(4) end, { desc = "
 vim.keymap.set("n", "<A-p>", function() harpoon:list():prev() end, { desc = "Harpoon previuos" })
 vim.keymap.set("n", "<A-n>", function() harpoon:list():next() end, { desc = "Harpoon next" })
 
+-- GutterMarks
+require('guttermarks').setup({})
+
 -- oil
 require('oil').setup({
     keymaps = {
@@ -200,3 +203,4 @@ vim.cmd.colorscheme('gruvbox')
 
 -- Status line, lua line
 require('lualine_setup')
+

@@ -48,6 +48,7 @@ vim.pack.add({
     { src = 'https://github.com/rcarriga/nvim-dap-ui.git' },
     { src = 'https://github.com/nvim-neotest/nvim-nio.git' },
     { src = 'https://github.com/onsails/lspkind.nvim.git' },
-    { src = 'https://github.com/nvim-tree/nvim-tree.lua.git' }
+    { src = 'https://github.com/nvim-tree/nvim-tree.lua.git' },
+    { src = 'https://github.com/dimtion/guttermarks.nvim' }
 })
 
