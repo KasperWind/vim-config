@@ -165,9 +165,18 @@ local function toggle_inlay(buf_nr)
     vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = buf_nr })
 end
 
+--- Converts the input to a hex formattet string
+--- `#xxxxxx`
+--- @param n integer value to convert to a hex string
+local function to_hex(n)
+  if not n then return nil end
+  return string.format("#%06x", n)
+end
+
 m.find_fzf_file = find_fzf_file
 m.find_file = find_file
 m.client_supports_method = client_supports_method
 m.toggle_inlay = toggle_inlay
+m.to_hex = to_hex
 
 return m
