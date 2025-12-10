@@ -53,11 +53,15 @@ vim.api.nvim_create_autocmd('LspAttach', {
                     client.config.settings["rust-analyzer"].check.allTargets = false
                     client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
                 end
+            elseif client.name == 'lemminx' then
+                require('omnisharp')
+                vim.keymap.set("n", "<leader>lj", "<cmd>OmniSharpCodeViewToggle<CR>", opts("Toggle codebehind/xaml"))
             elseif client.name == 'omnisharp' then
                 require('omnisharp')
                 vim.keymap.set("n", "<leader>bb", "<cmd>OmniSharpBuild<CR>", opts("Dotnet build"))
                 vim.keymap.set("n", "<leader>br", "<cmd>OmniSharpRun<CR>", opts("Dotnet run"))
                 vim.keymap.set("n", "<leader>bt", "<cmd>OmniSharpTest<CR>", opts("Dotnet run tests"))
+                vim.keymap.set("n", "<leader>lj", "<cmd>OmniSharpCodeViewToggle<CR>", opts("Toggle codebehind/xaml"))
                 vim.cmd.compiler('dotnet')
 
                 -- local omni = require('omnisharp_extended')
