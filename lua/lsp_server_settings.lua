@@ -32,9 +32,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format, opts('LSP: Format document'))
 
         -- Diagnostics
+        vim.keymap.set('n', '<leader>lt', function() vim.diagnostic.enable(not vim.diagnostic.is_enabled()) end, opts('LSP: Toggle document diagnostic'))
         vim.keymap.set('n', '<leader>ld', vim.diagnostic.open_float, opts('LSP: Show diagnostic'))
         vim.keymap.set('n', '<leader>lq', vim.diagnostic.setloclist, opts('LSP: Buffer diagnostic to location list'))
         vim.keymap.set('n', '<leader>sd', fzf_lua.lsp_document_diagnostics, opts('LSP: Search document diagnostic'))
+
 
         if client ~= nil then
             if client.name == 'rust_analyzer' then
