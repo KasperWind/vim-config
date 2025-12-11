@@ -3,6 +3,10 @@
 -- Credit: glepnir
 -- Modified colors and added icons and current folder
 local lualine = require('lualine')
+local f = require('functions')
+
+-- TODO: get colors from current hl groups and make sure that it can be updated after load
+
 local col = require('gruvbox').palette
 
 -- Color table for highlights
@@ -20,6 +24,12 @@ local colors = {
     blue     = col.bright_blue,
     red      = col.bright_red,
 }
+
+local hl = vim.api.nvim_get_hl(0, {name = "Normal", link = false})
+-- print(vim.inspect(hl))
+-- print(to_hex(hl.bg))
+colors.bg = f.to_hex(hl.bg)
+colors.bg = f.to_hex(hl.fg)
 
 local conditions = {
     buffer_not_empty = function()
