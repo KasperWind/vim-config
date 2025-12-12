@@ -28,7 +28,7 @@ local colors = {
 local hl = vim.api.nvim_get_hl(0, {name = "Normal", link = false})
 -- print(vim.inspect(hl))
 -- print(to_hex(hl.bg))
-colors.bg = f.to_hex(hl.bg)
+colors.fg = f.to_hex(hl.bg)
 colors.bg = f.to_hex(hl.fg)
 
 local conditions = {
