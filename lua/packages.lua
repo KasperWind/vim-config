@@ -41,7 +41,7 @@ vim.pack.add({
     { src = 'https://github.com/NeogitOrg/neogit.git' },
     { src = 'https://github.com/ThePrimeagen/harpoon.git',            version = 'harpoon2' },
     { src = 'https://github.com/stevearc/oil.nvim.git' },
-    { src = 'https://github.com/ellisonleao/gruvbox.nvim.git' },
+    { src = 'https://github.com/sainnhe/gruvbox-material.git' },
     { src = 'https://github.com/nvim-lualine/lualine.nvim.git' },
     { src = 'https://github.com/Hoffs/omnisharp-extended-lsp.nvim.git' },
     { src = 'https://github.com/mfussenegger/nvim-dap.git' },
@@ -49,6 +49,10 @@ vim.pack.add({
     { src = 'https://github.com/nvim-neotest/nvim-nio.git' },
     { src = 'https://github.com/onsails/lspkind.nvim.git' },
     { src = 'https://github.com/nvim-tree/nvim-tree.lua.git' },
-    { src = 'https://github.com/dimtion/guttermarks.nvim' }
+    { src = 'https://github.com/dimtion/guttermarks.nvim' },
+    { src = 'https://github.com/gbprod/nord.nvim.git' },
+    { src = 'https://github.com/neanias/everforest-nvim.git' },
+    { src = 'https://codeberg.org/ficd/ashen.nvim.git'},
+    { src = 'https://github.com/uhs-robert/oasis.nvim.git' },
 })
 

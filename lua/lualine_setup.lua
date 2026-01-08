@@ -3,33 +3,33 @@
 -- Credit: glepnir
 -- Modified colors and added icons and current folder
 local lualine = require('lualine')
-local f = require('functions')
+-- local f = require('functions')
 
 -- TODO: get colors from current hl groups and make sure that it can be updated after load
 
-local col = require('gruvbox').palette
+-- local col = require('gruvbox').palette
 
 -- Color table for highlights
 -- stylua: ignore
 local colors = {
-    bg       = col.dark_soft,
-    fg       = col.light_soft,
-    yellow   = col.bright_yellow,
-    cyan     = col.bright_aqua,
-    darkblue = col.bright_blue,
-    green    = col.bright_green,
-    orange   = col.bright_orange,
-    violet   = col.neutral_purple,
-    magenta  = col.neutral_purple,
-    blue     = col.bright_blue,
-    red      = col.bright_red,
+    bg       = '#303030',
+    fg       = '#f7f7f7',
+    yellow   = '#ede8af',
+    cyan     = '#0D4040',
+    darkblue = '#1A3D5C',
+    green    = '#6BBF59',
+    orange   = '#E3910B',
+    violet   = '#8F4FE6',
+    magenta  = '#B37800',
+    blue     = '#6BBAE0',
+    red      = '#A23B3B',
 }
 
-local hl = vim.api.nvim_get_hl(0, {name = "Normal", link = false})
--- print(vim.inspect(hl))
--- print(to_hex(hl.bg))
-colors.fg = f.to_hex(hl.bg)
-colors.bg = f.to_hex(hl.fg)
+-- local hl = vim.api.nvim_get_hl(0, {name = "Normal", link = false})
+-- -- print(vim.inspect(hl))
+-- -- print(to_hex(hl.bg))
+-- colors.fg = f.to_hex(hl.bg)
+-- colors.bg = f.to_hex(hl.fg)
 
 local conditions = {
     buffer_not_empty = function()

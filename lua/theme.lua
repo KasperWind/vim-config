@@ -2,10 +2,10 @@
 -- Theme options
 -- ============================================================================
 
+-- Color scheme, Gruvbox
 vim.o.background = 'dark'
+vim.g.gruvbox_material_background = 'hard'
 vim.cmd.filetype('on')
 
 -- Colorscheme selection
-vim.cmd.colorscheme('gruvbox')
--- vim.cmd.colorscheme("habamax")
--- vim.cmd.colorscheme("darkblue")
+vim.cmd.colorscheme('oasis-desert')

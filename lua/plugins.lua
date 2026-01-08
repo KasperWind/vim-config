@@ -196,11 +196,6 @@ require('nvim-tree').setup()
 vim.keymap.set("n", "<leader>nN", ":NvimTreeToggle<cr>", { desc = "Nvim-tree toggle" })
 vim.keymap.set("v", "<leader>nN", ":NvimTreeToggle<cr>", { desc = "Nvim-tree toggle" })
 
--- Color scheme, Gruvbox
-require('gruvbox').setup({})
-vim.o.background = 'dark'
--- vim.cmd.colorscheme('gruvbox')
-
 -- Status line, lua line
 require('lualine_setup')
 
