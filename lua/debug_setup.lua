@@ -106,7 +106,7 @@ dap.configurations.c = {
         type = "gdb",
         request = "launch",
         program = function()
-            local p = f.find_file(vim.fn.getcwd() .. '/bin/', 'Path to file to debug',  nil)
+            local p = f.find_file(vim.fn.getcwd(), 'Path to file to debug',  nil)
             return p
         end,
         cwd = "${workspaceFolder}",
