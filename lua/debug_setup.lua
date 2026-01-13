@@ -70,6 +70,8 @@ vim.keymap.set('n', "<leader>bS", "<cmd>DapStepOver<cr>", { desc = "Debug: Step 
 vim.keymap.set('n', "<leader>bs", "<cmd>DapStepInto<cr>", { desc = "Debug: Step into" })
 vim.keymap.set('n', "<leader>bo", "<cmd>DapStepOut<cr>", { desc = "Debug: Step out" })
 vim.keymap.set('n', "<leader>bq", dapui.close, { desc = "Debug: Terminate" })
+vim.keymap.set('n', "<C-s>", "<cmd>DapStepInto<cr>", { desc = "Debug: Step into" })
+vim.keymap.set('n', "<CS-s>", "<cmd>DapStepOver<cr>", { desc = "Debug: Step over" })
 
 -- ============================================================================
 -- Debuggers
