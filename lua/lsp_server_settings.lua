@@ -77,6 +77,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
                 vim.cmd.compiler('dotnet')
             elseif client.name == 'ts_ls' then
                 vim.keymap.set("n", "<leader>br", "<cmd>term bun %<CR>", opts("Bun run, current file"))
+            elseif client.name == 'ols' then
+                vim.keymap.set("n", "<leader>bb", "<cmd>!odin build . -debug<CR>", opts("Odin build"))
+                vim.keymap.set("n", "<leader>br", "<cmd>!odin run . -debug<CR>", opts("Odin run"))
             end
         end
 
