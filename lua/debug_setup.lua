@@ -116,6 +116,15 @@ else
         name = 'lldb'
     }
 end
+
+local function get_type()
+    if f.is_windows then
+        return "lldb"
+    else
+        return "gdb"
+    end
+end
+
 -- c
 dap.configurations.c = {
     {
@@ -156,13 +165,42 @@ dap.configurations.c = {
 -- cpp
 dap.configurations.cpp = dap.configurations.c
 
-local function get_type()
-    if f.is_windows then
-        return "lldb"
-    else
-        return "gdb"
-    end
-end
+dap.configurations.odin = {
+    {
+        name = "Launch",
+        type = get_type(),
+        request = "launch",
+        program = function()
+            local p = f.find_file(vim.fn.getcwd(), 'Path to file to debug', nil)
+            return p
+        end,
+        cwd = "${workspaceFolder}",
+        stopAtBeginningOfMainSubprogram = false,
+    },
+    {
+        name = "Select and attach to process",
+        type = get_type(),
+        request = "attach",
+        program = function()
+            return f.find_file(vim.fn.getcwd(), 'Path to executable to debug', nil)
+        end,
+        pid = function()
+            local name = vim.fn.input('Executable name (filter): ')
+            return require("dap.utils").pick_process({ filter = name })
+        end,
+        cwd = '${workspaceFolder}'
+    },
+    {
+        name = 'Attach to gdbserver :1234',
+        type = get_type(),
+        request = 'attach',
+        target = 'localhost:1234',
+        program = function()
+            return f.find_file(vim.fn.getcwd(), 'Path to executable to debug', nil)
+        end,
+        cwd = '${workspaceFolder}'
+    },
+}
 
 dap.configurations.rust = {
     {
