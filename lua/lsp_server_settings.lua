@@ -212,10 +212,18 @@ vim.lsp.config('ols', {
     }
 )
 
+function get_omni_cmd()
+    if functions.is_windows then
+        return 'OmniSharp.exe'
+    else
+        return 'OmniSharp'
+    end
+end
+
 -- omnisharp
 vim.lsp.config('omnisharp', {
     cmd = {
-        vim.fn.executable('OmniSharp') == 1 and 'OmniSharp' or 'omnisharp',
+        get_omni_cmd(),
         '-z', -- https://github.com/OmniSharp/omnisharp-vscode/pull/4300
         '--hostPID',
         tostring(vim.fn.getpid()),
