@@ -102,13 +102,28 @@ dap.adapters.gdb = {
     args = { "--interpreter=dap", "--eval-command", "set print pretty on" }
 }
 
+-- lldb
+if f.is_windows then
+    dap.adapters.lldb = {
+        type = 'executable',
+        command = 'lldb-dap.exe',
+        name = 'lldb'
+    }
+else
+    dap.adapters.lldb = {
+        type = 'executable',
+        command = 'lldb-dap',
+        name = 'lldb'
+    }
+end
+-- c
 dap.configurations.c = {
     {
         name = "Launch",
         type = "gdb",
         request = "launch",
         program = function()
-            local p = f.find_file(vim.fn.getcwd(), 'Path to file to debug',  nil)
+            local p = f.find_file(vim.fn.getcwd(), 'Path to file to debug', nil)
             return p
         end,
         cwd = "${workspaceFolder}",
@@ -138,14 +153,24 @@ dap.configurations.c = {
         cwd = '${workspaceFolder}'
     },
 }
+-- cpp
 dap.configurations.cpp = dap.configurations.c
+
+local function get_type()
+    if f.is_windows then
+        return "lldb"
+    else
+        return "gdb"
+    end
+end
+
 dap.configurations.rust = {
     {
         name = "Launch",
-        type = "gdb",
+        type = get_type(),
         request = "launch",
         program = function()
-            local p = f.find_file(vim.fn.getcwd() .. '/target/debug', 'Path to file to debug',  nil)
+            local p = f.find_file(vim.fn.getcwd() .. '/target/debug', 'Path to file to debug', nil)
             return p
         end,
         cwd = "${workspaceFolder}",
@@ -153,7 +178,7 @@ dap.configurations.rust = {
     },
     {
         name = "Select and attach to process",
-        type = "gdb",
+        type = get_type(),
         request = "attach",
         program = function()
             return f.find_file(vim.fn.getcwd() .. '/target/debug/', 'Path to executable to debug', nil)
@@ -166,7 +191,7 @@ dap.configurations.rust = {
     },
     {
         name = 'Attach to gdbserver :1234',
-        type = 'gdb',
+        type = get_type(),
         request = 'attach',
         target = 'localhost:1234',
         program = function()
