@@ -54,5 +54,6 @@ vim.pack.add({
     { src = 'https://github.com/neanias/everforest-nvim.git' },
     { src = 'https://codeberg.org/ficd/ashen.nvim.git'},
     { src = 'https://github.com/uhs-robert/oasis.nvim.git' },
+    { src = 'https://github.com/blazkowolf/gruber-darker.nvim.git'},
 })
 
