@@ -14,6 +14,7 @@ local servers = {
     'cssls',
     'zls',
     'lemminx',
+    'ols',
 }
 
 for _, server in pairs(servers) do
