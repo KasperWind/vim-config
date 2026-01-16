@@ -173,6 +173,10 @@ local function to_hex(n)
   return string.format("#%06x", n)
 end
 
+m.is_windows = vim.loop.os_uname().sysname == "Windows_NT"
+m.is_mac = vim.loop.os_uname().sysname == "Darwin"
+m.is_linux = not m.is_windows and not m.is_mac
+
 m.find_fzf_file = find_fzf_file
 m.find_file = find_file
 m.client_supports_method = client_supports_method
