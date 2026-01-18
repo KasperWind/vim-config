@@ -95,5 +95,6 @@ vim.filetype.add({
         TcPOU = 'jsx',
         gohtml = 'html',
         html = 'html',
+        woto = 'proto',
     }
 })

@@ -54,6 +54,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
                     client.config.settings["rust-analyzer"].check.allTargets = false
                     client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
                 end
+            elseif client.name == 'ols' then
+                require('odin')
+                vim.keymap.set("n", "<leader>bb", "<cmd>OdinBuild<CR>", opts("Odin build"))
+                vim.keymap.set("n", "<leader>br", "<cmd>OdinRun<CR>", opts("Odin run"))
+                vim.keymap.set("n", "<leader>bt", "<cmd>OdinTest<CR>", opts("Odin test"))
             elseif client.name == 'lemminx' then
                 require('omnisharp')
                 vim.keymap.set("n", "<leader>lj", "<cmd>OmniSharpCodeViewToggle<CR>", opts("Toggle codebehind/xaml"))
@@ -77,9 +82,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
                 vim.cmd.compiler('dotnet')
             elseif client.name == 'ts_ls' then
                 vim.keymap.set("n", "<leader>br", "<cmd>term bun %<CR>", opts("Bun run, current file"))
-            elseif client.name == 'ols' then
-                vim.keymap.set("n", "<leader>bb", "<cmd>!odin build . -debug<CR>", opts("Odin build"))
-                vim.keymap.set("n", "<leader>br", "<cmd>!odin run . -debug<CR>", opts("Odin run"))
             end
         end
 
