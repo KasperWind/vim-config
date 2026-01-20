@@ -33,7 +33,6 @@ local patterns = {
     'bash',
     'html',
     'md',
-    'conf',
     'css',
     'cs',
 }
