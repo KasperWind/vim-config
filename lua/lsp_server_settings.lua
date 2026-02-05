@@ -46,6 +46,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
                 vim.keymap.set("n", "<leader>br", "<cmd>CargoRun<CR>", opts("Cargo run"))
                 vim.keymap.set("n", "<leader>bt", "<cmd>CargoTest<CR>", opts("Cargo test"))
 
+                vim.keymap.set("n", "<leader>mb", "<cmd>make build<CR>", opts("Make build"))
+                vim.keymap.set("n", "<leader>mr", "<cmd>make run<CR>", opts("Make run"))
+                vim.keymap.set("n", "<leader>mt", "<cmd>make test<CR>", opts("Make test"))
+
                 local path = client.workspace_folders[1].name .. "/.cargo/config.toml"
                 local filereadable = vim.fn.filereadable(path)
                 if filereadable == 1 then

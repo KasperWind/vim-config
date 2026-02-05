@@ -58,6 +58,9 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
 -- Better J behavior
 vim.keymap.set("n", "J", "mzJ`z", { desc = "Join lines and keep cursor position" })
 
+-- Build and other
+vim.keymap.set("n", "<leader>m", ":make<CR>", { desc = "Run make for current buffer."});
+
 -- Lua remaps
 vim.keymap.set('n', '<leader><leader>r', '<cmd>source %<CR>', { desc = 'Source current file' })
 vim.keymap.set('n', '<leader>r', ':.lua<CR>', { desc = 'Lua run current line' })
