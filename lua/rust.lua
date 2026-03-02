@@ -20,8 +20,13 @@ vim.api.nvim_create_user_command('CargoRun', function()
     end
 end, {})
 
+vim.api.nvim_create_user_command('CargoTestPrint', function()
+    vim.cmd('enew')
+    vim.cmd('term cargo test -- --test-threads=1 --no-capture')
+end, {})
+
 vim.api.nvim_create_user_command('CargoTest', function()
     vim.cmd('enew')
-    vim.cmd('term cargo test -- --no-capture')
+    vim.cmd('term cargo test')
 end, {})
 

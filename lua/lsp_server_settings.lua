@@ -44,7 +44,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
                 require('rust')
                 vim.keymap.set("n", "<leader>bb", "<cmd>CargoBuild<CR>", opts("Cargo build"))
                 vim.keymap.set("n", "<leader>br", "<cmd>CargoRun<CR>", opts("Cargo run"))
-                vim.keymap.set("n", "<leader>bt", "<cmd>CargoTest<CR>", opts("Cargo test"))
+                vim.keymap.set("n", "<leader>btt", "<cmd>CargoTest<CR>", opts("Cargo test, clean"))
+                vim.keymap.set("n", "<leader>btp", "<cmd>CargoTestPrint<CR>", opts("Cargo test, with no capture and 1 job, for print output"))
 
                 vim.keymap.set("n", "<leader>mb", "<cmd>make build<CR>", opts("Make build"))
                 vim.keymap.set("n", "<leader>mr", "<cmd>make run<CR>", opts("Make run"))
