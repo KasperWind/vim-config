@@ -29,6 +29,15 @@ vim.keymap.set("n", "<S-h>", ":bprevious<CR>", { desc = "Previous buffer" })
 vim.keymap.set("n", "<leader>bn", ":bnext<CR>", { desc = "Next buffer" })
 vim.keymap.set("n", "<leader>bp", ":bprevious<CR>", { desc = "Previous buffer" })
 
+-- Movement in wrapped text
+vim.keymap.set("n", "j", function ()
+    return vim.v.count == 0 and "gj" or "j"
+end, {desc = "Down (wrap-aware)", expr = true, silent = true})
+vim.keymap.set("n", "k", function ()
+    return vim.v.count == 0 and "gk" or "k"
+end, {desc = "Up (wrap-aware)", expr = true, silent = true})
+
+
 -- Better window navigation
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to bottom window" })
