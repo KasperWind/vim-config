@@ -96,5 +96,6 @@ vim.filetype.add({
         gohtml = 'html',
         html = 'html',
         woto = 'proto',
+        usercontrol = 'html',
     }
 })
