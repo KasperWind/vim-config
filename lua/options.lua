@@ -25,6 +25,10 @@ vim.opt.smartcase = true  -- Case sensitive if uppercase in search
 vim.opt.hlsearch = false  -- Don't highlight search results
 vim.opt.incsearch = true  -- Show matches as you type
 
+-- Grep settings
+vim.opt.grepprg = "rg --vimgrep --smart-case"
+vim.opt.grepformat = "%f:%l:%c:%m"
+
 -- Visual settings
 vim.opt.termguicolors = true                                  -- Enable 24-bit colors
 vim.opt.signcolumn = "yes"                                    -- Always show sign column
