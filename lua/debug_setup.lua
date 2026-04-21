@@ -128,14 +128,16 @@ end
 -- c
 dap.configurations.c = {
     {
-        name = "Launch",
+        name = "Launch GDB",
         type = "gdb",
         request = "launch",
+        args = { "--interpreter=dap", "--eval-command", "set print pretty on" },
         program = function()
             local p = f.find_file(vim.fn.getcwd(), 'Path to file to debug', nil)
+            print(p)
             return p
         end,
-        cwd = "${workspaceFolder}",
+        cwd = vim.fn.getcwd(),
         stopAtBeginningOfMainSubprogram = false,
     },
     {
@@ -149,7 +151,7 @@ dap.configurations.c = {
             local name = vim.fn.input('Executable name (filter): ')
             return require("dap.utils").pick_process({ filter = name })
         end,
-        cwd = '${workspaceFolder}'
+        cwd = vim.fn.getcwd(),
     },
     {
         name = 'Attach to gdbserver :1234',
@@ -159,7 +161,7 @@ dap.configurations.c = {
         program = function()
             return f.find_file(vim.fn.getcwd() .. '/bin/', 'Path to executable to debug', nil)
         end,
-        cwd = '${workspaceFolder}'
+        cwd = vim.fn.getcwd(),
     },
 }
 -- cpp
@@ -174,7 +176,7 @@ dap.configurations.odin = {
             local p = f.find_file(vim.fn.getcwd(), 'Path to file to debug', nil)
             return p
         end,
-        cwd = "${workspaceFolder}",
+        cwd = vim.fn.getcwd(),
         stopAtBeginningOfMainSubprogram = false,
     },
     {
@@ -188,7 +190,7 @@ dap.configurations.odin = {
             local name = vim.fn.input('Executable name (filter): ')
             return require("dap.utils").pick_process({ filter = name })
         end,
-        cwd = '${workspaceFolder}'
+        cwd = vim.fn.getcwd(),
     },
     {
         name = 'Attach to gdbserver :1234',
@@ -198,7 +200,7 @@ dap.configurations.odin = {
         program = function()
             return f.find_file(vim.fn.getcwd(), 'Path to executable to debug', nil)
         end,
-        cwd = '${workspaceFolder}'
+        cwd = vim.fn.getcwd(),
     },
 }
 
@@ -211,7 +213,7 @@ dap.configurations.rust = {
             local p = f.find_file(vim.fn.getcwd() .. '/target/debug', 'Path to file to debug', nil)
             return p
         end,
-        cwd = "${workspaceFolder}",
+        cwd = vim.fn.getcwd(),
         stopAtBeginningOfMainSubprogram = false,
     },
     {
@@ -225,7 +227,7 @@ dap.configurations.rust = {
             local name = vim.fn.input('Executable name (filter): ')
             return require("dap.utils").pick_process({ filter = name })
         end,
-        cwd = '${workspaceFolder}'
+        cwd = vim.fn.getcwd(),
     },
     {
         name = 'Attach to gdbserver :1234',
@@ -235,6 +237,6 @@ dap.configurations.rust = {
         program = function()
             return f.find_file(vim.fn.getcwd() .. '/target/debug/', 'Path to executable to debug', nil)
         end,
-        cwd = '${workspaceFolder}'
+        cwd = vim.fn.getcwd(),
     },
 }

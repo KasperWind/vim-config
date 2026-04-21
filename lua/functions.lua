@@ -70,7 +70,7 @@ if vim.fn.isdirectory(undodir) == 0 then
 end
 
 local function append_slash(path)
-    if string.char(string.len(path)) == '/' then
+    if path:sub(-1) == '/' then
         return path
     else
         return path .. '/'
@@ -182,5 +182,6 @@ m.find_file = find_file
 m.client_supports_method = client_supports_method
 m.toggle_inlay = toggle_inlay
 m.to_hex = to_hex
+m.append_slash = append_slash
 
 return m
