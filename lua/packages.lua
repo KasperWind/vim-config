@@ -33,7 +33,7 @@ vim.pack.add({
     { src = 'https://github.com/j-hui/fidget.nvim.git' },
     { src = 'https://github.com/folke/which-key.nvim.git' },
     { src = 'https://github.com/folke/todo-comments.nvim.git' },
-    { src = 'https://github.com/Saghen/blink.cmp.git'},
+    { src = 'https://github.com/Saghen/blink.cmp.git', version = 'v1'},
     { src = 'https://github.com/xzbdmw/colorful-menu.nvim.git' },
     { src = 'https://github.com/lewis6991/gitsigns.nvim.git' },
     { src = 'https://github.com/sindrets/diffview.nvim.git' },
@@ -54,7 +54,7 @@ vim.pack.add({
     { src = 'https://github.com/neanias/everforest-nvim.git' },
     { src = 'https://codeberg.org/ficd/ashen.nvim.git'},
     { src = 'https://github.com/uhs-robert/oasis.nvim.git' },
-    { src = 'https://github.com/blazkowolf/gruber-darker.nvim.git'},
+    { src = 'https://github.com/KasperWind/gruber-darker.nvim.git'},
     { src = 'https://github.com/nvim-mini/mini.icons.git'},
 })
 
