@@ -168,3 +168,21 @@ vim.keymap.set("v", "<leader>nN", ":NvimTreeToggle<cr>", { desc = "Nvim-tree tog
 
 -- Status line, lua line
 require('lualine_setup')
+
+-- Conform.nvim formatter setup
+require("conform").setup({
+	formatters_by_ft = {
+		lua = { "stylua" },
+		javascript = { "prettier", stop_after_first = true },
+		markdown = { "prettier", stop_after_first = true },
+		-- Conform will run multiple formatters sequentially
+		-- python = { "isort", "black" },
+		-- You can customize some of the format options for the filetype (:help conform.format)
+		-- rust = { "rustfmt", lsp_format = "fallback" },
+		-- Conform will run the first available formatter
+	},
+})
+
+local conform = require("conform")
+vim.keymap.set("n", "<leader>f", conform.format, { desc = "Formats the current buffer" })
+vim.keymap.set("v", "<leader>f", conform.format, { desc = "Formats the current buffer" })
