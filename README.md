@@ -1,10 +1,13 @@
 # Vim-Setup
+
 My Neovim Setup
 
-# LSP Server 
+# LSP Server
+
 Servers and debug adapters have to be in path
 
 ## LSP Server list
+
 Look at https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 
 ### Javascript and TypeScript
@@ -21,6 +24,6 @@ npm i -g vscode-langservers-extracted
 
 ### Dotnet
 
-Install `netcoredbg` and `OmniSharp` 
+Install `netcoredbg` and `OmniSharp`
 
 For Fsharp install `fsautocomplete`
