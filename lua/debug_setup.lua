@@ -2,76 +2,86 @@
 -- Debug setup
 -- ============================================================================
 
-local dap = require('dap')
-local f = require('functions')
+local dap = require("dap")
+local f = require("functions")
 
 -- dap ui
-local dapui = require('dapui')
+local dapui = require("dapui")
 dapui.setup({
-    layouts = { {
-        elements = { {
-            id = "scopes",
-            size = 0.25
-        }, {
-            id = "breakpoints",
-            size = 0.25
-        }, {
-            id = "stacks",
-            size = 0.25
-        }, {
-            id = "watches",
-            size = 0.25
-        } },
-        position = "left",
-        size = 80
-    }, {
-        elements = { {
-            id = "repl",
-            size = 0.5
-        }, {
-            id = "console",
-            size = 0.5
-        } },
-        position = "bottom",
-        size = 10
-    } },
-
+	layouts = {
+		{
+			elements = {
+				{
+					id = "scopes",
+					size = 0.25,
+				},
+				{
+					id = "breakpoints",
+					size = 0.25,
+				},
+				{
+					id = "stacks",
+					size = 0.25,
+				},
+				{
+					id = "watches",
+					size = 0.25,
+				},
+			},
+			position = "left",
+			size = 80,
+		},
+		{
+			elements = {
+				{
+					id = "repl",
+					size = 0.5,
+				},
+				{
+					id = "console",
+					size = 0.5,
+				},
+			},
+			position = "bottom",
+			size = 10,
+		},
+	},
 })
 dap.listeners.before.attach.dapui_config = function()
-    dapui.open()
+	dapui.open()
 end
 dap.listeners.before.launch.dapui_config = function()
-    dapui.open()
+	dapui.open()
 end
 dap.listeners.before.event_terminated.dapui_config = function()
-    dapui.close()
+	dapui.close()
 end
 dap.listeners.before.event_exited.dapui_config = function()
-    dapui.close()
+	dapui.close()
 end
 
 -- Options
 
-vim.fn.sign_define('DapBreakpoint', { text = '', texthl = 'DiagnosticSignError', linehl = '', numhl = '' })
-vim.fn.sign_define('DapBreakpointCondition', { text = '', texthl = 'DiagnosticSignError', linehl = '', numhl = '' })
-vim.fn.sign_define('DapLogPoint', { text = '', texthl = 'DiagnosticSignError', linehl = '', numhl = '' })
-vim.fn.sign_define('DapStopped', { text = '', texthl = 'DiagnosticSignHint', linehl = '', numhl = '' })
-vim.fn.sign_define('DapBreakpointRejected', { text = '', texthl = 'DiagnosticSignError', linehl = '', numhl = '' })
+vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
+vim.fn.sign_define("DapBreakpointCondition", { text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
+vim.fn.sign_define("DapLogPoint", { text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
+vim.fn.sign_define("DapStopped", { text = "", texthl = "DiagnosticSignHint", linehl = "", numhl = "" })
+vim.fn.sign_define("DapBreakpointRejected", { text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
 
 -- keymaps
 local conditional_breakpoint = function()
-    local condition = vim.fn.input('Enter breakpoint condition: ')
-    dap.set_breakpoint(condition)
+	local condition = vim.fn.input("Enter breakpoint condition: ")
+	dap.set_breakpoint(condition)
 end
-vim.keymap.set('n', "<leader>bB", "<cmd>DapToggleBreakpoint<cr>", { desc = "Debug: Set breakpoint" })
-vim.keymap.set('n', "<leader>bC", conditional_breakpoint, { desc = "Debug: Set conditional breakpoint" })
-vim.keymap.set('n', "<leader>bc", "<cmd>DapContinue<cr>", { desc = "Debug: Run/continue" })
-vim.keymap.set('n', "<leader>bS", "<cmd>DapStepOver<cr>", { desc = "Debug: Step over" })
-vim.keymap.set('n', "<leader>bs", "<cmd>DapStepInto<cr>", { desc = "Debug: Step into" })
-vim.keymap.set('n', "<leader>bo", "<cmd>DapStepOut<cr>", { desc = "Debug: Step out" })
-vim.keymap.set('n', "<leader>bq", dapui.close, { desc = "Debug: Terminate" })
-vim.keymap.set('n', "<C-s>", "<cmd>DapStepInto<cr>", { desc = "Debug: Step into" })
-vim.keymap.set('n', "<CS-s>", "<cmd>DapStepOver<cr>", { desc = "Debug: Step over" })
+vim.keymap.set("n", "<leader>bB", "<cmd>DapToggleBreakpoint<cr>", { desc = "Debug: Set breakpoint" })
+vim.keymap.set("n", "<leader>bC", conditional_breakpoint, { desc = "Debug: Set conditional breakpoint" })
+vim.keymap.set("n", "<leader>bc", "<cmd>DapContinue<cr>", { desc = "Debug: Run/continue" })
+vim.keymap.set("n", "<leader>bS", "<cmd>DapStepOver<cr>", { desc = "Debug: Step over" })
+vim.keymap.set("n", "<leader>bs", "<cmd>DapStepInto<cr>", { desc = "Debug: Step into" })
+vim.keymap.set("n", "<leader>bo", "<cmd>DapStepOut<cr>", { desc = "Debug: Step out" })
+vim.keymap.set("n", "<leader>bq", dapui.close, { desc = "Debug: Terminate" })
+vim.keymap.set("n", "<C-s>", "<cmd>DapStepInto<cr>", { desc = "Debug: Step into" })
+vim.keymap.set("n", "<CS-s>", "<cmd>DapStepOver<cr>", { desc = "Debug: Step over" })
 
 -- ============================================================================
 -- Debuggers
@@ -79,164 +89,164 @@ vim.keymap.set('n', "<CS-s>", "<cmd>DapStepOver<cr>", { desc = "Debug: Step over
 
 -- Dotnet
 dap.adapters.coreclr = {
-    type = 'executable',
-    command = vim.fn.exepath('netcoredbg'),
-    args = { '--interpreter=vscode' }
+	type = "executable",
+	command = vim.fn.exepath("netcoredbg"),
+	args = { "--interpreter=vscode" },
 }
 
 dap.configurations.cs = {
-    {
-        type = "coreclr",
-        name = "launch - netcoredbg",
-        request = "launch",
-        program = function()
-            return f.find_file(vim.fn.getcwd() .. '/bin/Debug/', 'Path to file to debug', 'dll')
-        end,
-    },
+	{
+		type = "coreclr",
+		name = "launch - netcoredbg",
+		request = "launch",
+		program = function()
+			return f.find_file(vim.fn.getcwd() .. "/bin/Debug/", "Path to file to debug", "dll")
+		end,
+	},
 }
 
 -- gdb
 dap.adapters.gdb = {
-    type = 'executable',
-    command = 'gdb',
-    args = { "--interpreter=dap", "--eval-command", "set print pretty on" }
+	type = "executable",
+	command = "gdb",
+	args = { "--interpreter=dap", "--eval-command", "set print pretty on" },
 }
 
 -- lldb
 if f.is_windows then
-    dap.adapters.lldb = {
-        type = 'executable',
-        command = 'lldb-dap.exe',
-        name = 'lldb'
-    }
+	dap.adapters.lldb = {
+		type = "executable",
+		command = "lldb-dap.exe",
+		name = "lldb",
+	}
 else
-    dap.adapters.lldb = {
-        type = 'executable',
-        command = 'lldb-dap',
-        name = 'lldb'
-    }
+	dap.adapters.lldb = {
+		type = "executable",
+		command = "lldb-dap",
+		name = "lldb",
+	}
 end
 
 local function get_type()
-    if f.is_windows then
-        return "lldb"
-    else
-        return "gdb"
-    end
+	if f.is_windows then
+		return "lldb"
+	else
+		return "gdb"
+	end
 end
 
 -- c
 dap.configurations.c = {
-    {
-        name = "Launch GDB",
-        type = "gdb",
-        request = "launch",
-        args = { "--interpreter=dap", "--eval-command", "set print pretty on" },
-        program = function()
-            local p = f.find_file(vim.fn.getcwd(), 'Path to file to debug', nil)
-            print(p)
-            return p
-        end,
-        cwd = vim.fn.getcwd(),
-        stopAtBeginningOfMainSubprogram = false,
-    },
-    {
-        name = "Select and attach to process",
-        type = "gdb",
-        request = "attach",
-        program = function()
-            return f.find_file(vim.fn.getcwd() .. '/bin/', 'Path to executable to debug', nil)
-        end,
-        pid = function()
-            local name = vim.fn.input('Executable name (filter): ')
-            return require("dap.utils").pick_process({ filter = name })
-        end,
-        cwd = vim.fn.getcwd(),
-    },
-    {
-        name = 'Attach to gdbserver :1234',
-        type = 'gdb',
-        request = 'attach',
-        target = 'localhost:1234',
-        program = function()
-            return f.find_file(vim.fn.getcwd() .. '/bin/', 'Path to executable to debug', nil)
-        end,
-        cwd = vim.fn.getcwd(),
-    },
+	{
+		name = "Launch GDB",
+		type = "gdb",
+		request = "launch",
+		args = { "--interpreter=dap", "--eval-command", "set print pretty on" },
+		program = function()
+			local p = f.find_file(vim.fn.getcwd(), "Path to file to debug", nil)
+			print(p)
+			return p
+		end,
+		cwd = vim.fn.getcwd(),
+		stopAtBeginningOfMainSubprogram = false,
+	},
+	{
+		name = "Select and attach to process",
+		type = "gdb",
+		request = "attach",
+		program = function()
+			return f.find_file(vim.fn.getcwd() .. "/bin/", "Path to executable to debug", nil)
+		end,
+		pid = function()
+			local name = vim.fn.input("Executable name (filter): ")
+			return require("dap.utils").pick_process({ filter = name })
+		end,
+		cwd = vim.fn.getcwd(),
+	},
+	{
+		name = "Attach to gdbserver :1234",
+		type = "gdb",
+		request = "attach",
+		target = "localhost:1234",
+		program = function()
+			return f.find_file(vim.fn.getcwd() .. "/bin/", "Path to executable to debug", nil)
+		end,
+		cwd = vim.fn.getcwd(),
+	},
 }
 -- cpp
 dap.configurations.cpp = dap.configurations.c
 
 dap.configurations.odin = {
-    {
-        name = "Launch",
-        type = get_type(),
-        request = "launch",
-        program = function()
-            local p = f.find_file(vim.fn.getcwd(), 'Path to file to debug', nil)
-            return p
-        end,
-        cwd = vim.fn.getcwd(),
-        stopAtBeginningOfMainSubprogram = false,
-    },
-    {
-        name = "Select and attach to process",
-        type = get_type(),
-        request = "attach",
-        program = function()
-            return f.find_file(vim.fn.getcwd(), 'Path to executable to debug', nil)
-        end,
-        pid = function()
-            local name = vim.fn.input('Executable name (filter): ')
-            return require("dap.utils").pick_process({ filter = name })
-        end,
-        cwd = vim.fn.getcwd(),
-    },
-    {
-        name = 'Attach to gdbserver :1234',
-        type = get_type(),
-        request = 'attach',
-        target = 'localhost:1234',
-        program = function()
-            return f.find_file(vim.fn.getcwd(), 'Path to executable to debug', nil)
-        end,
-        cwd = vim.fn.getcwd(),
-    },
+	{
+		name = "Launch",
+		type = get_type(),
+		request = "launch",
+		program = function()
+			local p = f.find_file(vim.fn.getcwd(), "Path to file to debug", nil)
+			return p
+		end,
+		cwd = vim.fn.getcwd(),
+		stopAtBeginningOfMainSubprogram = false,
+	},
+	{
+		name = "Select and attach to process",
+		type = get_type(),
+		request = "attach",
+		program = function()
+			return f.find_file(vim.fn.getcwd(), "Path to executable to debug", nil)
+		end,
+		pid = function()
+			local name = vim.fn.input("Executable name (filter): ")
+			return require("dap.utils").pick_process({ filter = name })
+		end,
+		cwd = vim.fn.getcwd(),
+	},
+	{
+		name = "Attach to gdbserver :1234",
+		type = get_type(),
+		request = "attach",
+		target = "localhost:1234",
+		program = function()
+			return f.find_file(vim.fn.getcwd(), "Path to executable to debug", nil)
+		end,
+		cwd = vim.fn.getcwd(),
+	},
 }
 
 dap.configurations.rust = {
-    {
-        name = "Launch",
-        type = get_type(),
-        request = "launch",
-        program = function()
-            local p = f.find_file(vim.fn.getcwd() .. '/target/debug', 'Path to file to debug', nil)
-            return p
-        end,
-        cwd = vim.fn.getcwd(),
-        stopAtBeginningOfMainSubprogram = false,
-    },
-    {
-        name = "Select and attach to process",
-        type = get_type(),
-        request = "attach",
-        program = function()
-            return f.find_file(vim.fn.getcwd() .. '/target/debug/', 'Path to executable to debug', nil)
-        end,
-        pid = function()
-            local name = vim.fn.input('Executable name (filter): ')
-            return require("dap.utils").pick_process({ filter = name })
-        end,
-        cwd = vim.fn.getcwd(),
-    },
-    {
-        name = 'Attach to gdbserver :1234',
-        type = get_type(),
-        request = 'attach',
-        target = 'localhost:1234',
-        program = function()
-            return f.find_file(vim.fn.getcwd() .. '/target/debug/', 'Path to executable to debug', nil)
-        end,
-        cwd = vim.fn.getcwd(),
-    },
+	{
+		name = "Launch",
+		type = get_type(),
+		request = "launch",
+		program = function()
+			local p = f.find_file(vim.fn.getcwd() .. "/target/debug", "Path to file to debug", nil)
+			return p
+		end,
+		cwd = vim.fn.getcwd(),
+		stopAtBeginningOfMainSubprogram = false,
+	},
+	{
+		name = "Select and attach to process",
+		type = get_type(),
+		request = "attach",
+		program = function()
+			return f.find_file(vim.fn.getcwd() .. "/target/debug/", "Path to executable to debug", nil)
+		end,
+		pid = function()
+			local name = vim.fn.input("Executable name (filter): ")
+			return require("dap.utils").pick_process({ filter = name })
+		end,
+		cwd = vim.fn.getcwd(),
+	},
+	{
+		name = "Attach to gdbserver :1234",
+		type = get_type(),
+		request = "attach",
+		target = "localhost:1234",
+		program = function()
+			return f.find_file(vim.fn.getcwd() .. "/target/debug/", "Path to executable to debug", nil)
+		end,
+		cwd = vim.fn.getcwd(),
+	},
 }

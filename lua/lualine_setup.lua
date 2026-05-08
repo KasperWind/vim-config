@@ -2,13 +2,13 @@
 -- Author: shadmansaleh
 -- Credit: glepnir
 -- Modified colors and added icons and current folder
-local lualine = require('lualine')
+local lualine = require("lualine")
 -- local f = require('functions')
 lualine.setup({
-    options = {
-        component_separators = { left = '', right = '' },
-        section_separators = { left = '▊', right = '▊' },
-    }
+	options = {
+		component_separators = { left = "", right = "" },
+		section_separators = { left = "▊", right = "▊" },
+	},
 })
 --
 -- -- TODO: get colors from current hl groups and make sure that it can be updated after load

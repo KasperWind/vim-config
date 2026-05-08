@@ -2,7 +2,7 @@
 -- KEYMAPS
 -- ============================================================================
 
-local wk = require('which-key')
+local wk = require("which-key")
 
 --
 -- Normal mode mappings
@@ -22,7 +22,7 @@ vim.keymap.set("n", "<S-q>", "<cmd>bdelete!<CR>", { desc = "Close buffer" })
 
 -- Buffer navigation
 wk.add({
-    { "<leader>b", group = "Buffer operations" },
+	{ "<leader>b", group = "Buffer operations" },
 })
 vim.keymap.set("n", "<S-l>", ":bnext<CR>", { desc = "Next buffer" })
 vim.keymap.set("n", "<S-h>", ":bprevious<CR>", { desc = "Previous buffer" })
@@ -30,13 +30,12 @@ vim.keymap.set("n", "<leader>bn", ":bnext<CR>", { desc = "Next buffer" })
 vim.keymap.set("n", "<leader>bp", ":bprevious<CR>", { desc = "Previous buffer" })
 
 -- Movement in wrapped text
-vim.keymap.set("n", "j", function ()
-    return vim.v.count == 0 and "gj" or "j"
-end, {desc = "Down (wrap-aware)", expr = true, silent = true})
-vim.keymap.set("n", "k", function ()
-    return vim.v.count == 0 and "gk" or "k"
-end, {desc = "Up (wrap-aware)", expr = true, silent = true})
-
+vim.keymap.set("n", "j", function()
+	return vim.v.count == 0 and "gj" or "j"
+end, { desc = "Down (wrap-aware)", expr = true, silent = true })
+vim.keymap.set("n", "k", function()
+	return vim.v.count == 0 and "gk" or "k"
+end, { desc = "Up (wrap-aware)", expr = true, silent = true })
 
 -- Better window navigation
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
@@ -47,7 +46,7 @@ vim.keymap.set("n", "<C-q>", ":quit<CR>", { desc = "Close window" })
 
 -- Splitting & Resizing
 wk.add({
-    { "<leader>w", group = "Buffer operations" },
+	{ "<leader>w", group = "Buffer operations" },
 })
 vim.keymap.set("n", "<leader>wv", ":vsplit<CR>", { desc = "Split window vertically" })
 vim.keymap.set("n", "<leader>wh", ":split<CR>", { desc = "Split window horizontally" })
@@ -68,9 +67,9 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
 vim.keymap.set("n", "J", "mzJ`z", { desc = "Join lines and keep cursor position" })
 
 -- Build and other
-vim.keymap.set("n", "<leader>m", ":make<CR>", { desc = "Run make for current buffer."});
+vim.keymap.set("n", "<leader>m", ":make<CR>", { desc = "Run make for current buffer." })
 
 -- Lua remaps
-vim.keymap.set('n', '<leader><leader>r', '<cmd>source %<CR>', { desc = 'Source current file' })
-vim.keymap.set('n', '<leader>r', ':.lua<CR>', { desc = 'Lua run current line' })
-vim.keymap.set('v', '<leader>r', ':lua<CR>', { desc = 'Lua run current selection' })
+vim.keymap.set("n", "<leader><leader>r", "<cmd>source %<CR>", { desc = "Source current file" })
+vim.keymap.set("n", "<leader>r", ":.lua<CR>", { desc = "Lua run current line" })
+vim.keymap.set("v", "<leader>r", ":lua<CR>", { desc = "Lua run current selection" })
