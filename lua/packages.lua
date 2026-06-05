@@ -57,4 +57,5 @@ vim.pack.add({
 	{ src = "https://github.com/KasperWind/gruber-darker.nvim.git" },
 	{ src = "https://github.com/nvim-mini/mini.icons.git" },
 	{ src = "https://github.com/stevearc/conform.nvim.git" },
+	{ src = "https://github.com/folke/trouble.nvim.git" },
 })
