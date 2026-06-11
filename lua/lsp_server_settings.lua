@@ -68,9 +68,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 				end
 			elseif client.name == "ols" then
 				require("odin")
-				vim.keymap.set("n", "<leader>bb", "<cmd>OdinBuild<CR>", opts("Odin build"))
-				vim.keymap.set("n", "<leader>br", "<cmd>OdinRun<CR>", opts("Odin run"))
-				vim.keymap.set("n", "<leader>bt", "<cmd>OdinTest<CR>", opts("Odin test"))
+				vim.keymap.set("n", "<leader>bb", "<cmd>OdinBuild<CR>", opts("Odin build folder"))
+				vim.keymap.set("n", "<leader>br", "<cmd>OdinRun<CR>", opts("Odin run folder"))
+				vim.keymap.set("n", "<leader>bt", "<cmd>OdinTest<CR>", opts("Odin test folder"))
+				vim.keymap.set("n", "<leader>bB", "<cmd>OdinBuildFile<CR>", opts("Odin build file"))
+				vim.keymap.set("n", "<leader>bR", "<cmd>OdinRunFile<CR>", opts("Odin run file"))
 			elseif client.name == "lemminx" then
 				require("omnisharp")
 				vim.keymap.set("n", "<leader>lj", "<cmd>OmniSharpCodeViewToggle<CR>", opts("Toggle codebehind/xaml"))
